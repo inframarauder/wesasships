@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--jQuery and Bootstrap JS-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>       
+    <title>Wesasships|Dashboard-student</title>
+    <link rel="stylesheet" href="/assets/styles/index-styles.css">
+    <link rel="stylesheet" href="/assets/styles/dashboard-styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" type="image/.jpeg" href="/assets/images/icons/Logo.jpeg">
+</head>
+<body>
+    <% if(messages) {%>
+      <% if(messages.errorMessage) {%>
+         <div class="alert alert-danger">
+             <p><%= messages.errorMessage %></p>
+         </div>
+    <%  } %>
+    <% if(messages.successMessage) {%>
+     <div class="alert alert-success">
+         <p><%= messages.successMessage %></p>
+     </div>
+  <%  } %>
+<%   } %>
+    <div class="container" style="min-height: 80vh;">
+    <!--top section of the page-->
+  <nav class="navbar navbar-expand-sm navbar-light ">
+      <a href="/students/dashboard" class="navbar-brand ml-2"><img id='title-img' src="/assets/images/icons/title_logo.jpeg"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarContent">
+          <ul class="navbar-nav ml-auto mr-4">
+              <% include partials/internshipList.ejs %>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Profile
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <p class="dropdown-item">Logged in as:</p>
+                      <p class="dropdown-item">
+                         <legend><%= student.firstName %> <%= student.lastName %><br></legend> 
+                         <small class="text-center"><%= student.username %></small> 
+                         <hr>
+                         <% if(student.premium_user){ %>
+                          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                          <small class="text-center text-info">Premium User</small> 
+                        <% } %>
+                      </p>
+                      <a class="dropdown-item" href="/students/manage_account">Manage Account</a>
+                      <a class="dropdown-item" href="/students/delete_account">Delete Account</a>
+                      <a class="dropdown-item" href="/students/logout">Logout</a>
+                  </div>
+              </li>    
+          </ul>
+      </div>     
+  </nav>
+  <% if(!student.phoneNumber) { %>
+    <div class ="alert alert-info">
+      <p>
+        Adding a phone number helps your employers contact you easily.This phone number shall be visible on your resume.<br>
+        <a href="/students/manage_account">Add Phone Number.</a>
+      </p>
+    </div>
+<%  } %>
+<% if(!student.city) { %>
+  <div class ="alert alert-info">
+    <p>
+      Adding your city helps you find internships easily at places nearby you.Your city shall be visible on your resume.<br>
+      <a href="/students/manage_account">Add City.</a>
+    </p>
+  </div>
+<%  } %>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+          <a class="nav-link" href="/students/dashboard"  >Resume</a>
+      </li>
+      <li class="nav-item active ">
+          <a class="nav-link active " id="home-tab" href="/students/dashboard/applications">Applications</a>
+      </li>
+</ul>
+<% if(student.internshipsApplied.length === 0){ %>
+  <div class="alert  alert-info">
+    <p>You haven't applied for internships yet. <a href="/internships/all_internships">Start Applying!</a></p>
+  </div>
+<% } else{%>
+  <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Profile</th>
+          <th scope="col">Company</th>
+          <th scope="col">Application Status</th>
+        </tr>
+      </thead>
+      <script>
+        var outputmarkup="";
+    </script>
+    <% for(var i=student.internshipsApplied.length-1; i>=0 ; i--){%>
+        <script>
+            var appId = '<%= student.internshipsApplied[i]  %>';
+            console.log(appId);
+            $.ajax({
+                type:'GET',
+                url:'/internships/applications/application_data/?id='+appId,
+                success:function(data){
+                    updateMarkup(data);
+                }
+            });
+            
+            function updateMarkup(data){
+                outputmarkup +="<tr></th>"+"<td>"+new Date(data.date).toDateString()+"</td>"+"<td><a class='text-info' href='/internships/details/?id="+data.internshipid+"'>"+data.profile+"</a></td>"+"<td>"+data.company+"</td>";
+                if(data.status === 'Applied'){
+                    outputmarkup+="<td class='text-info'>Applied</td>";
+                }
+                if(data.status === 'Selected'){
+                    outputmarkup+="<td class='text-success'>Selected</td>";
+                }
+                if(data.status === 'Rejected'){
+                    outputmarkup+="<td class='text-danger'>Rejected</td>";
+                }
+                $('#displayApplications').html(outputmarkup);
+            }
+        </script>
+    <%} %>
+        <tbody id="displayApplications">
+
+        </tbody>
+  </table>
+  <% }%>
+
+    </div>
+    <% include partials/footer.ejs %>
+</body>
+</html>

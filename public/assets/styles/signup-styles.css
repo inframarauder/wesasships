@@ -1,0 +1,14 @@
+.bg-img{
+   /* background-image: url('./images/icons/signup-bg.jpg');/*image to be added*/*/
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.registration-area{
+    background-color: #fff;
+    max-width: 350px;
+    border: 1px solid #dddd;
+    border-radius: 20px;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px;
+}

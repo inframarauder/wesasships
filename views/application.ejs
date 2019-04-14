@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--jQuery and Bootstrap JS-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <title>Wesasships|Application Review</title>
+    <link rel="stylesheet" href="/assets/styles/index-styles.css">
+    <link rel="stylesheet" href="/assets/styles/dashboard-styles.css">
+    <link rel="shortcut icon" type="image/.jpeg" href="/assets/images/icons/Logo.jpeg">
+  </head>
+  <body>
+      <!--top section of the page-->
+      <div class="container" style="min-height:80vh;">
+        <nav class="navbar navbar-expand-sm navbar-light ">
+          <a href="/employers/dashboard" class="navbar-brand ml-2"><img id='title-img' src="/assets/images/icons/title_logo.jpeg"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>          
+            <div class="collapse navbar-collapse " id="navbarContent">
+                <ul class="navbar-nav  ml-auto mr-4">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Profile
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <p class="dropdown-item">Logged in as:</p>
+                            <p class="dropdown-item">
+                               <legend><%= user.firstName %><br></legend> 
+                               <small class="text-center"><%= user.username %></small> 
+                               <hr>
+                            </p>
+                            <a class="dropdown-item" href="/employers/manage_account">Manage Account</a>
+                            <a class="dropdown-item" href="/employers/delete_account">Delete Account</a>
+                            <a class="dropdown-item" href="/employers/logout">Logout</a>
+                        </div>
+                    </li>    
+                </ul>
+            </div>     
+        </nav>
+        <div  class="text-center">
+          <div class="interview-review">
+              <% if(application.status === 'Selected'){%>
+                <div class="alert alert-success">
+                  <p>Application Selected!Please contact the student via email within 2-3 days.</p>
+                </div>
+            <%  } %>
+            <% if(application.status === 'Rejected'){%>
+              <div class="alert alert-danger">
+                <p>Application Rejected!</p>
+              </div>
+          <%  } %>
+          <% if(application.status === 'Applied'){ %>
+            <div style="float:right;">
+                <a class="btn btn-success" id="selectbutton" href="/internships/applications/decision/?id=<%= internship._id %>&appNo=<%= application.applicationNo %>&status=Selected">Select Application</a>
+                <a class="btn btn-danger" id="rejectbutton"  href="/internships/applications/decision?id=<%= internship._id %>&appNo=<%= application.applicationNo %>&status=Rejected">Reject Application</a><br>
+            </div>
+          <% } else{ %>
+            <div style="float:right;">
+              <a href="/employers/view_posted_internships" >Back to Dashboard</a>
+            </div>
+        <%  } %>
+            <br>
+            <br>
+                  <legend class="text-info">Interview Performance:</legend>
+                  <p>Question 1: Why should you be hired for the internship?</p>
+                  <p><strong><%= application.answer1 %></strong></p><hr>
+                  <p>Question 2: Are you available for the said period, starting immediately, for the internship? If not, what is the time period you are available for and the earliest date you can start this internship on?</p>
+                  <p><strong><%= application.answer2 %></strong></p><hr>
+                  <% if(internship.question3){%>
+                    <p>Question 3: <%= internship.question3 %></p>
+                    <p><strong><%= application.answer3 %></strong></p><hr>
+                  <% } %>
+                  <% if(internship.question4){%>
+                    <p>Question 4: <%=internship.question4 %></p>
+                    <p><strong><%= application.answer4 %></strong></p><hr>
+                  <% } %>
+            </div>
+          </div>
+             <legend class="text-info text-center">Resume:</legend>         
+              <div class="jumbotron" style="margin-top:10px;">
+                  <div class="resume">
+                    <div class= "ml-2" id="resume-header">
+                      <div class="row">
+                        <div class="col-6 col-md-4">
+                          <p id="student-name"><h2><%= student.firstName %> <%= student.lastName %></h2></p>
+                          <p style="color:#767676;">
+                            <%= student.username %><br>
+                            <% if(student.phoneNumber) {%>
+                               <%= student.phoneNumber %><br>
+                            <% } %>
+                            <% if(student.city) {%>
+                              <%= student.city %><br>
+                           <% } %>
+                          </p>
+                         </div>
+                        <div class="col-6 col-md-4"></div>
+                        <% if(!applying) {%>
+                          <div class="col-3">
+                              <a href="/students/manage_account"><i class="material-icons" style="margin-left:20px;">border_color</i></a>   
+                           </div>
+                       <% } %>
+                       
+                  </div>
+                    </div><hr>
+                    <div class ="row">
+                      <div class="col-6 col-md-4 ml-2">
+                        <h4 class="resume-field">EDUCATION</h4>
+                      </div>
+                      <div class="col-6 col-md-4 ml-2">
+                        <ul class="resuinfo">
+                          <% if(student.education) {%>
+                         
+                            <% if(!(Object.keys(student.education.phd).length === 0 && student.education.phd.constructor === Object)){ %>
+                              <li>
+                               <strong>Ph.D</strong> <br>
+                               <% if(student.education.phd.status === 'on'){ %>
+                                <small class="text-success">Pursuing</small><br>
+                            <%   } %>
+                                <small> 
+                                <%=student.education.phd.school %><br>
+                                <%=student.education.phd.year%> <br>
+                                <%=student.education.phd.score %><br>
+                                </small>
+                              </li>
+                          <%  } %>
+                            <% if(!(Object.keys(student.education.postgrad).length === 0 && student.education.postgrad.constructor === Object)){ %>
+                              <li>
+                               <strong>Master's</strong> <br>
+                               <% if(student.education.postgrad.status === 'on'){ %>
+                                <small class="text-success">Pursuing</small><br>
+                            <%   } %>
+                                <small> 
+                                <%=student.education.postgrad.school %><br>
+                                <%=student.education.postgrad.year%> <br>
+                                <%=student.education.postgrad.score %><br>
+                                </small>
+                              </li>
+                          <%  } %>
+                            <% if(!(Object.keys(student.education.undergrad).length === 0 && student.education.undergrad.constructor === Object)){ %>
+                              <li>
+                               <strong>Bachelor's</strong> <br>
+                               <% if(student.education.undergrad.status === 'on'){ %>
+                                <small class="text-success">Pursuing</small><br>
+                            <%   } %>
+                                <small> 
+                                <%=student.education.undergrad.school %><br>
+                                <%=student.education.undergrad.year%> <br>
+                                <%=student.education.undergrad.score %><br>
+                                </small>
+                              </li>
+                          <%  } %>
+                          <% if(!(Object.keys(student.education.diploma).length === 0 && student.education.diploma.constructor === Object)){ %>
+                            <li>
+                             <strong>Diploma</strong> <br>
+                             <% if(student.education.diploma.status === 'on'){ %>
+                              <small class="text-success">Pursuing</small><br>
+                          <%   } %>
+                              <small> 
+                              <%=student.education.diploma.school %><br>
+                              <%=student.education.diploma.year%> <br>
+                              <%=student.education.diploma.score %><br>
+                              </small>
+                            </li>
+                        <%  } %>
+                            <% if(!(Object.keys(student.education.class12).length === 0 && student.education.class12.constructor === Object)){ %>
+                              <li>
+                               <strong>XII(Senior Secondary)</strong> <br>
+                                <small> 
+                                <%=student.education.class12.school %><br>
+                                <%=student.education.class12.board %> <%=student.education.class12.year%> <br>
+                                <%=student.education.class12.score %><br>
+                                </small>
+                              </li>
+                          <%  } %>
+                          <% if(!(Object.keys(student.education.class10).length === 0 && student.education.class10.constructor === Object)){ %>
+                            <li>
+                             <strong>X(Secondary)</strong> <br>
+                              <small> 
+                              <%=student.education.class10.school %><br>
+                              <%=student.education.class10.board %> <%=student.education.class10.year%> <br>
+                              <%=student.education.class10.score %><br>
+                              </small>
+                            </li>
+                        <%  } %>
+                     <% } %> 
+                        </ul>
+                        <% if(!applying) { %>
+                        <small><span class="add-field" data-toggle="modal" data-target="#EduModal">+Add Education</span></small>                                                           
+                    <%}%>
+                      </div>
+                    </div><hr>
+                  <div class ="row">
+                      <div class="col-6 col-md-4 ml-2">
+                        <h4 class="resume-field">SKILLS</h4>
+                      </div>
+                      <div class="col-6 col-md-4 ml-2">
+                        <div class="row">
+                            <% for(var i=0; i< student.skills.length; i++){ %>
+                        <div class="col">
+                              <%= student.skills[i].skill %><br>
+                              <span style="font-size :0.5rem;">
+                                <% for(var j=1; j<=5; j++){ %>
+                                  <% if(j<=student.skills[i].score){ %>
+                                  <span class="fa fa-star checked"></span>
+                               <% }else{ %>
+                                <span class="fa fa-star"></span>
+                                 <% } %>
+                              <% } %><br>
+                              </span>
+                              <% if(!applying) { %>
+                              <i class="fa fa-trash" data-item= "/skills/<%= student.skills[i].skill %>" ></i>
+                             <% } %>
+                        </div>
+                           <% } %>
+                          </div>
+                       <% if(!applying) {%>
+                        <% if(student.skills.length == 5 && !student.premium_user){%>
+                          <span class="text-danger">
+                            You have reached the maximum number of free skills!<br>
+                            <a href="/premium_profile">Upgrade to a premium profile for more.</a>
+                          </span>
+                         <% }else{ %>
+                       <small><span class="add-field" data-toggle="modal" data-target="#SkillsModal">+Add Skill</span></small>                                 
+                        <% } %>
+                      <% } %>
+                      </div>
+                      <% if(!applying) { %>
+                        <% if(!student.premium_user) { %>
+                          <div class="col-sm-2">
+                            <div class="premium-ad" style="font-size:0.7rem;">
+                              <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                              Add upto 5 skills for free.
+                              <a href="/premium_profile">Upgrade to a premium profile for more.</a>
+                            </div>
+                          </div>
+                        <% } %>
+                     <% } %>
+                     
+                    </div><hr>
+                  <div class ="row">
+                      <div class="col-6 col-md-4 ml-2">
+                        <h4 class="resume-field">TRAININGS</h4>
+                      </div>
+                      <div class="col-6 col-md-4 ml-2">
+                        <ul class="resuinfo">
+                          <% for(var i=0; i< student.trainings.length; i++){ %>
+                            <li>
+                             <strong><%= student.trainings[i].name %></strong> <br>
+                             <small>
+                                <%= student.trainings[i].org %><br>
+                                <%= student.trainings[i].desc %>
+                             </small>
+                            </li>
+                        <%  } %>
+                       </ul>
+                       <% if(!applying){ %>
+                        <small><span class="add-field" data-toggle="modal" data-target="#TrainingModal">+Add Training</span></small>                                 
+                     <%  } %>
+                      </div>
+                    </div><hr>  
+                  <div class ="row">
+                      <div class="col-6 col-md-4 ml-2">
+                        <h4 class="resume-field">PROJECTS</h4>
+                      </div>
+                      <div class="col-6 col-md-4 ml-2">
+                          <ul class="resuinfo">
+                              <% for(var i=0; i< student.projects.length; i++){ %>
+                                <li>
+                                 <strong><%= student.projects[i].name %></strong> <br>
+                                 <small>
+                                    <%= student.projects[i].desc %><br>
+                                    <%if(student.projects[i].link){ %>
+                                      Link : <a href="<%=student.projects[i].link%>"><%=student.projects[i].link%></a>
+                                  <%  } %>
+                                 </small>
+                                </li>
+                            <%  } %>
+                          </ul>
+                          <% if(!applying){ %>
+                          <small><span class="add-field" data-toggle="modal" data-target="#ProjectsModal">+Add Project</span></small>                                 
+                         <% } %>
+                      </div>
+                    </div><hr> 
+                  <div class ="row">
+                      <div class="col-6 col-md-4 ml-2">
+                        <h4 class="resume-field">WORK EXPERIENCE</h4>
+                      </div>
+                      <div class="col-6 col-md-4 ml-2">
+                          <ul class="resuinfo">
+                              <% for(var i=0; i< student.work_experience.length; i++){ %>
+                                <li>
+                                 <strong><%= student.work_experience[i].name %></strong> <br>
+                                 <small>
+                                    <%= student.work_experience[i].org %><br>
+                                     <%=student.work_experience[i].desc%>
+                                 </small>
+                                </li>
+                            <%  } %>
+                          </ul>
+                          <% if(!applying){ %>
+                            <small><span class="add-field" data-toggle="modal" data-target="#WorksModal">+Add Work Experience</span></small>                                                           
+                        <%  } %>
+                      </div>
+                    </div><hr>  
+                    <div class ="row">
+                        <div class="col-6 col-md-4 ml-2">
+                          <h4 class="resume-field">ACHIEVEMENTS</h4>
+                        </div>
+                        <div class="col-6 col-md-4 ml-2">
+                            <ul class="resuinfo">
+                                <% for(var i=0; i< student.achievements.length; i++){ %>
+                                  <li>
+                                   <strong><%= student.achievements[i].name %></strong> <br>
+                                   <small>
+                                       <%=student.achievements[i].desc%>
+                                   </small>
+                                  </li>
+                              <%  } %>
+                            </ul>
+                            <% if(!applying) {%>  
+                             <small><span class="add-field" data-toggle="modal" data-target="#AchievementsModal">+Add Achievement</span></small>                                                             
+                         <%} %>
+                            </div>
+                      </div><hr>  
+                  </div>
+                </div>               
+              </div>  
+
+    <% include partials/footer.ejs %>
+  </body>
+  </html>

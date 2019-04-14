@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--jQuery and Bootstrap JS-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Wesasships</title>
+    <link rel="stylesheet" href="../assets/styles/index-styles.css">
+    <link rel="shortcut icon" type="image/.jpeg" href="../assets/images/icons/Logo.jpeg">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <script>
+      $(document).ready(function(){
+        if($(window).width() <= 500){
+            $('.filter-area').addClass('hide');
+        }
+      });
+  </script>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-light ">
+        <a href="/" class="navbar-brand ml-2"><img id='title-img' src="../assets/images/icons/title_logo.jpeg"></a>
+    </nav>
+    <div class=" container all-internships">
+        <div class="row">
+            <div class="col-sm-3">
+                <form method="POST" action="/internships">
+                <div class="input-group">
+                    <input type="search" name="searchtext" class="form-control" placeholder="Search internships..">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></span>
+                    </div>
+                </div>
+                </form>
+                <hr>
+                <p class="text-center text-info filter-toggle">Filters<i class="fa fa-filter"></i></p>
+                <div class="filter-area">
+                    <form class="filter-form " method="POST" action="/internships/all_internships">
+                        <div class="form-group">
+                            <label>Category:</label>
+                            <select class="form-control" name="category">
+                                    <option value="">Select..</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Science">Science</option>
+                                <option value="Graphics Design">Graphics Design</option>
+                                <option value="Humanities">Humanities</option>
+                                <option value="Architecture">Architecture</option>
+                                <option value="Sports">Sports</option>
+                                <option value=" Law"> Law</option>
+                                <option value="Video Editing">Video Editing</option>
+                                <option value="Hospitality">Hospitality</option>
+                                <option value="Media">Media</option>
+                                <option value="Entertainment">Entertainment</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Location:</label>
+                            <div class="form-group">
+                                <select name="country" class="form-control countries order-alpha" id="countryId">
+                                    <option value="">Select Country</option>
+                                </select>
+                                <select name="state" class="form-control states order-alpha" id="stateId">
+                                    <option value="">Select State</option>
+                                </select>
+                                <select name="city" class="form-control cities order-alpha" id="cityId">
+                                    <option value="">Select City</option>
+                                </select>
+                                <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+                                <script src="//geodata.solutions/includes/countrystatecity.js"></script>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" name="workFromHome">
+                                <label>Work From Home</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" name="partTime">
+                                <label>Part-time</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Start Date:</label>
+                            <input type="date" class="form-control" name="date">
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-outline-primary btn-sm" type="reset" value="Clear All">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-block btn-primary" value="Apply Filters">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <script>
+                $(window).on('resize',()=>{
+                    if($(window).width() <= 500){
+                        $('.filter-area').addClass('hide');
+                        $('.filter-area').removeClass('show');
+
+                    }else{
+                        $('.filter-area').addClass('show');
+                        $('.filter-area').removeClass('hide');
+                    }
+                });
+
+                $('.filter-toggle').on('click',()=>{
+                    if($('.filter-area').hasClass('show')){
+                        $('.filter-area').addClass('hide');                        
+                        $('.filter-area').removeClass('show');
+                    }
+                   else if($('.filter-area').hasClass('hide')){
+                        $('.filter-area').addClass('show');
+                        $('.filter-area').removeClass('hide');
+                   }
+                });
+            </script>
+            <div class="col-sm-9">
+                <div>
+                        <% if (internships) { %>
+                            <p class="text-center text-info"><%= internships.length %> internship(s) found...</p>
+                            <% for(var i=0;i<internships.length;i++){ %>
+                                <% if(!internships[i].closeApplication){ %>
+                                    <div class="internships-area">
+                                            <% if(internships[i].company_details.logo){ %>
+                                                <div class="company-logo"><img src="../uploads/<%= internships[i].company_details.logo %>"></div>
+                                         <% } %>
+                                                <div class="internship-title"><%= internships[i].profile %> </div>
+                                                <b style="font-size: 0.8rem;"><%= internships[i].category %></b><br>
+                                                <b style="font-size: 0.8rem;"><%= internships[i].company_details.org_name %></b>
+                                                <hr>
+                                                <% if(internships[i].onlyWomen){ %>
+                                                    <small class="text-info" style="float:right;">Only Women.</small>
+                                              <% } %><br>
+                                                <p>Location: <%= internships[i].location.city %>,<%= internships[i].location.country %></p>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        Start date:<br>
+                                                        <%= internships[i].start.toLocaleDateString() %>
+                                                    </div>
+                                                    <div class="col">
+                                                        Duration: <br>
+                                                        <%= internships[i].duration %> <%= internships[i].durationScale %>                                                    
+                                                    </div>
+                                                    <div class="col">
+                                                        Stipend: <br>
+                                                        <%= internships[i].currency %> <%= internships[i].stipendAmt %><%= internships[i].stipendScale %>
+                                                    </div>
+                                                    <div class="col">
+                                                        No of openings:<br>
+                                                        <%= internships[i]. openings %>
+                                                    </div>
+                                                </div>
+                                               <br>
+                                                <p class="text-info">
+                                                    <%= internships[i].type %>
+                                                    <a href="/internships/details/?id=<%= internships[i].id %>" style="float:right">View Details/Apply</a>
+                                                </p>  
+                                                <% if(internships[i].jobOffer){ %>
+                                                    <h5 class="text-info">This internship comes with a job offer!</h5>
+                                              <%  } %>
+                                        </div><br>
+                              <%  } %>
+                                    
+                           <% } %>
+                         <% } %>
+                </div>
+            </div>
+        </div>
+
+
+  
+        
+    </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+    <% include partials/footer.ejs %>
+     
+</body>
+</html> 

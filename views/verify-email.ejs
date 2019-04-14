@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!--jQuery and Bootstrap JS-->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <title>Wesasships|Verify Email</title>
+        <link rel="stylesheet" href="../assets/styles/index-styles.css">
+        <link rel="shortcut icon" type="image/.jpeg" href="../assets/images/icons/Logo.jpeg">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-sm navbar-light ">
+            <a href="/" class="navbar-brand ml-2"><img id='title-img' src="../assets/images/icons/title_logo.jpeg"></a>
+        </nav>
+        <div class="container " style="height:70vh; font-size: 1.5rem;">
+            <% if(messages){ %>
+                <% if(messages.successMessage) { %>
+                    <div class="alert-success">
+                        <p><%= messages.successMessage %></p>
+                    </div>
+               <% } %>
+               <% if(messages.errorMessage) { %>
+                <div class="alert">
+                    <div class="alert-danger">
+                        <p><%= messages.errorMessage %></p>
+                    </div>
+                </div>
+           <% } %>
+          <%  } %>
+            <p>
+                 An email with an activation link will be sent to <span class="text-info"><%= user.username %></span>.<br>
+                 Please verify your accout using that mail.
+            </p>
+            <p>
+                <form method="POST" action="/<%= user.usertype %>s/verifyEmail">
+                  <input class="btn btn-primary" type="submit" value="Send Verification Email">
+                </form>
+            </p>
+        </div>
+        <% include partials/footer.ejs %>
+    </body>

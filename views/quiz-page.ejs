@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--jQuery and Bootstrap JS-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Wesasships|Dashboard-student</title>
+    <link rel="stylesheet" href="/assets/styles/index-styles.css">
+    <link rel="stylesheet" href="/assets/styles/dashboard-styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" type="image/.jpeg" href="/assets/images/icons/Logo.jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container" style="min-height: 80vh;">
+    <nav class="navbar navbar-expand-sm navbar-light ">
+        <a href="/" class="navbar-brand ml-2"><img id='title-img' src="/assets/images/icons/title_logo.jpeg"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarContent">
+            <ul class="navbar-nav ml-auto mr-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Profile
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <p class="dropdown-item">Logged in as:</p>
+                        <p class="dropdown-item">
+                            <legend><%= student.firstName %> <%= student.lastName %><br></legend> 
+                            <small class="text-center"><%= student.username %></small> 
+                            <hr>
+                            <% if(student.premium_user){ %>
+                            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                            <small class="text-center text-info">Premium User</small> 
+                            <% } %>
+                        </p>
+                        <a class="dropdown-item" href="/students/manage_account">Manage Account</a>
+                        <a class="dropdown-item" href="/students/delete_account">Delete Account</a>
+                        <a class="dropdown-item" href="/students/logout">Logout</a>
+                    </div>
+                </li>    
+            </ul>
+        </div>     
+    </nav>
+    <div class=" jumbotron text-center">
+        <% if(score === null){%>
+        <h4>Take the following quiz on <%= skill.skill %>  to add it to your resume.</h4>
+        <a class="btn btn-secondary" href="/students/dashboard">Cancel</a>
+        <div class="jumbotron bg-white quiz-area">
+            <form class="text-left ml-4" method="POST" action="/students/dashboard/resume/skills/quiz/<%= skill._id %>">
+                <% for(var i=0; i< skill.questions.length; i++){ %>
+                    <strong><%= (i+1) %>.<%= skill.questions[i].question %></strong><br>
+                    <% for (var j=0; j< skill.questions[i].options.length; j++){ %>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="answer<%= (i+1) %>" value="<%= skill.questions[i].options[j] %>">
+                            <label class="form-check-label" for="exampleRadios1">
+                                <%= skill.questions[i].options[j] %>
+                            </label>
+                        </div>
+                <% } %>
+                <hr>
+                <% } %>
+                <input type="submit" class="btn btn-primary" style=" float: right;" value="Submit">
+            </form>
+        </div>
+        <% }else{ %>
+           <h4>Your Score is <%= score %>.</h4>
+           <a href="/students/dashboard">Go back to resume.</a>
+       <% } %>
+      
+    </div>
+</div>
+
+<% include partials/footer.ejs %>
+</body>

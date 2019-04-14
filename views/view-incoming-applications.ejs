@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--jQuery and Bootstrap JS-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>    
+    <title>Wesasships|Employers Dashboard</title>
+    <link rel="stylesheet" href="/assets/styles/index-styles.css">
+    <link rel="stylesheet" href="/assets/styles/dashboard-styles.css">
+    <link rel="shortcut icon" type="image/.jpeg" href="/assets/images/icons/Logo.jpeg">
+  </head>
+  <body>
+      <!--top section of the page-->
+      <div class="container" style="min-height:80vh;">
+        <nav class="navbar navbar-expand-sm navbar-light ">
+                <a href="/employers/dashboard" class="navbar-brand ml-2"><img id='title-img' src="/assets/images/icons/title_logo.jpeg"></a>
+        </nav>           
+            <div class="collapse navbar-collapse " id="navbarContent">
+                <ul class="navbar-nav  ml-auto mr-4">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Profile
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <p class="dropdown-item">Logged in as:</p>
+                            <p class="dropdown-item">
+                               <legend><%= user.firstName %><br></legend> 
+                               <small class="text-center"><%= user.username %></small> 
+                               <hr>
+                            </p>
+                            <a class="dropdown-item" href="/employers/manage_account">Manage Account</a>
+                            <a class="dropdown-item" href="/employers/delete_account">Delete Account</a>
+                            <a class="dropdown-item" href="/employers/logout">Logout</a>
+                        </div>
+                    </li>    
+                </ul>
+            </div>     
+        </nav>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+              <a class="nav-link active" href="/internships/view_applications" role="link">View Applications</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/employers/view_posted_internships" role="link">View Posted Internships</a>
+        </li>
+      </ul>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                <th scope="col">Applicant's Name</th>
+                <th scope="col">Email ID</th>
+                <th scope="col">Status</th>
+                </tr>
+            </thead>
+              <tbody id="displayApplications">
+                <% for(var i=applications.length-1; i>=0; i--){%>
+                  <tr>
+                  <td><%= applications[i].studentName %></td>
+                  <td><%= applications[i].studentEmail %></td>
+                  <% if(applications[i].status === 'Applied'){ %>
+                    <td><a href="/internships/applications/?id=<%= internship._id %>&appNo=<%= applications[i].applicationNo %>">View</a></td>
+                 <% }else{ %>
+                  <% if(applications[i].status === 'Selected') {%>
+                    <td><span class="text-success"><%= applications[i].status %></span></td>
+                 <% }else{ %>
+                  <td><span class="text-danger"><%= applications[i].status %></span></td>
+                <%  } %>
+               <%  } %>
+                 </tr>
+                 <%} %>
+              </tbody>
+        </table>
+    </div>
+    
+    
+    <% include partials/footer.ejs %>
+  </body>
+  </html>

@@ -1,0 +1,93 @@
+.btn-styles{
+    border-radius:4px;
+    max-width: 200px;
+    margin-left:auto;
+    margin-right:30px;
+    margin-bottom:30px;
+    margin-top:30px;
+}
+.resume{
+    background-color:white;
+}
+#resume-header{
+    padding:10px;
+}
+.resume-field{
+    color: #1295c9;
+}
+
+.resume-content{
+    color:#767676;
+}
+
+.field-title{
+    font-size: 20px;
+}
+.field-description{
+    color:gray;
+    font-size:15px;
+}
+.add-field{
+    color:#1295c9;
+    cursor: pointer;
+}
+.add-field:hover{
+    border-bottom:1px solid #1295c9;
+}
+i{
+    cursor:pointer;
+    padding: 5px 5px 5px 5px;
+    color:#767676;
+    opacity: 0.5;
+    display:none;
+}
+.add-edu{
+    width: 10rem;
+    margin: 20px;
+}
+.modal-border{
+    border: 3px solid #1295c9;
+    border-radius: 8px;
+}
+
+
+.form-container{
+    text-align: center;
+    margin-top:1%;
+    border: 1px solid #1295c9;
+    border-radius: 4px;
+}
+
+.form-container form{
+    margin-top:1%;
+    text-align: left;
+    display: inline-block;
+    width: 90%;
+}
+
+@media only screen and (max-width:500px){.form-container{margin-left:5%;width: 80vw;} .form-container form{width: 95%;}} 
+
+.logo-styles{
+    max-width: 20%;
+    max-height: 20%;
+    border: 1px solid #1295c9;
+    border-radius: 4px;
+}
+
+.input-box{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.checked{
+    color: orange;
+}
+
+.resuinfo{
+    list-style-type: none;
+    padding: 1%;
+}
+.resuinfo li{
+    padding: 1%;
+}

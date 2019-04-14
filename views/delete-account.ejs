@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!--jQuery and Bootstrap JS-->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <title>Wesasships|Manage Account</title>
+        <link rel="shortcut icon" type="image/.jpeg" href="../assets/images/icons/Logo.jpeg">
+        <link rel="stylesheet" href="../assets/styles/index-styles.css">
+        <link rel="stylesheet" href="../assets/styles/manage-account-styles.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm navbar-light ">
+        <% include partials/title-logo.ejs %>                       
+        </nav>
+        <div class="jumbotron jumbotron-fluid " style="min-height: 80vh;">
+            <div class="container text-center bg-white">
+               <legend>We're sorry to see you go...</legend>
+               <p>Note: Deleteing your account is irreversible process. You cannot recover any information linked to this account ever again.</p>
+                <p>
+                    Are you sure you want to delete your account?<br><br>
+                    <button class="btn btn-primary" data-id=<%= user._id %>>Delete my account</button><br><br>  
+                    OR<br><br>
+                    <% if(user.usertype === 'student'){ %>
+                     <a href="/students/dashboard" >Go Back to dashboard</a>                 
+                    <% } %>
+                    <% if(user.usertype === 'employer'){ %>
+                        <a href="/employers/dashboard" >Go Back to dashboard</a>                 
+                    <% } %>
+                </p>
+            </div>
+        </div>
+        <script>
+            $('button').click(()=>{
+                var url = '/'+'<%= user.usertype %>'+'s'+'/delete_account/'+ $('button').attr('data-id');
+                console.log(url);
+                $.ajax({
+                    url: url,
+                    method:'DELETE',
+                    success:()=>{
+                        alert('Deleting account.....');
+                        window.location.href='/'
+                    }
+                });
+            });
+        </script>
+
+<% include partials/footer.ejs %>
+
+    </body>
+</html>

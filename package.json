@@ -1,0 +1,39 @@
+{
+  "name": "wesasships",
+  "version": "1.0.0",
+  "description": "Wesasships official website",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Subhasis Das",
+  "license": "ISC",
+  "engines": {
+    "node": "10.8.0"
+  },
+  "dependencies": {
+    "async": "^2.6.1",
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-flash-messages": "^0.1.1",
+    "express-session": "^1.15.6",
+    "gridfs-stream": "^1.1.1",
+    "mongoose": "^5.4.0",
+    "multer": "^1.4.1",
+    "multer-gridfs-storage": "^3.2.3",
+    "nodemailer": "^5.0.0",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0",
+    "passport-google-oauth20": "^1.0.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^5.0.1",
+    "payumoney-node": "^2.0.1",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}

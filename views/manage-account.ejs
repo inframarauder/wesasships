@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!--jQuery and Bootstrap JS-->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <title>Wesasships|Manage Account</title>
+        <link rel="stylesheet" href="../assets/styles/index-styles.css">
+        <link rel="stylesheet" href="../assets/styles/manage-account-styles.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="shortcut icon" type="image/.jpeg" href="../assets/images/icons/Logo.jpeg">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm navbar-light ">
+        <% include partials/title-logo.ejs %>                       
+            <% if(user.usertype === 'student'){ %>
+            <a href="/students/dashboard" class="ml-auto mr-4" >Back to dashboard</a>
+            <% } %>
+            <% if(user.usertype === 'employer'){ %>
+            <a href="/employers/dashboard" class="ml-auto mr-4" >Back to dashboard</a>
+           <% } %>
+        </nav>
+
+        <div class="jumbotron jumbotron-fluid " style="min-height: 80vh;">
+            <div class="container">
+                <p >
+                    Logged in as:<br>
+                    <legend><%= user.firstName %> <%=user.lastName %></legend>
+                    <h6><%= user.username %></h6>
+                </p>
+                <div class=" details-area">
+                    <% if(user.usertype === 'student'){ %>
+                        <p><h5 class="text-center">Student Details:</h5></p>
+                    <% } %>
+                    <% if(user.usertype === 'employer'){ %>
+                        <p><h5 class="text-center">Employer Details:</h5></p>
+                    <% } %>
+                  <% if(messages.errorMessage) { %>
+                    <div class ="alert alert-danger text-center">
+                        <p><%= messages.errorMessage %></p>
+                    </div>
+                <%  } %>
+                <% if(!user.phoneNumber) { %>
+                    <div class ="alert alert-info text-center">
+                        <p>Add a phone number.</p>
+                    </div>
+                <%  } %>
+                <% if(user.usertype === 'student') { %>
+                    <% if(!user.city) { %>
+                        <div class ="alert alert-info text-center">
+                            <p>Add your city.</p>
+                        </div>
+                    <%  } %>
+                <%  } %>
+
+                <% if(user.usertype === 'student'){ %>
+                  <form method="POST" action="/students/manage_account"> 
+                <% } %>
+                <% if(user.usertype === 'employer'){ %>
+                    <form method="POST" action="/employers/manage_account"> 
+                  <% } %>
+                        <div class="form-group">
+                            <label for="username">Email address</label>
+                            <input type="email" class="form-control" id="username" name="username" value=<%= user.username %> >
+                        </div>
+                        <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName" value=<%= user.firstName %> >
+                        </div>
+                        <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName" value=<%= user.lastName %> >
+                        </div>
+                        <div class="form-group">
+                            <label>Password:</label>
+                        <% if(user.usertype === 'student'){ %>
+                           <a href="/students/forgot">Change Password</a>
+                        <% } %>
+                        <% if(user.usertype === 'employer'){ %>
+                            <a href="/employers/forgot">Change Password</a>
+                         <% } %>
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number:</label>
+                        <% if(user.phoneNumber) { %>
+                            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value=<%= user.phoneNumber %> >                               
+                        <% } else {%>
+                            <input type="text" class="form-control danger" id="phoneNumber" name="phoneNumber" placeholder="Enter a phone number">                               
+                       <% } %>
+                        </div>
+                        <% if(user.usertype === 'student'){ %>
+                            <div class="form-group">
+                                <label for="city">City:</label>
+                            <% if(user.city) { %>
+                                <input type="text" class="form-control" id="city" name="city" value=<%= user.city %> >                               
+                            <% } else {%>
+                                <input type="text" class="form-control danger" id="city" name="city" placeholder="Enter your current city">                               
+                           <% } %>
+                        </div>
+                       <% } %>
+                        <button type="submit" class="btn btn-primary">Update Details</button>
+                 </form> 
+                </div>
+            </div>
+        </div>
+
+        <% include partials/footer.ejs %>
+        
+    </body>

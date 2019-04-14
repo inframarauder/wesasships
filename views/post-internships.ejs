@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--jQuery and Bootstrap JS-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Wesasships|Employers Dashboard</title>
+    <link rel="stylesheet" href="/assets/styles/index-styles.css">
+    <link rel="stylesheet" href="/assets/styles/dashboard-styles.css">
+    <link rel="shortcut icon" type="image/.jpeg" href="/assets/images/icons/Logo.jpeg">
+  </head>
+  <body>
+      <!--top section of the page-->
+      <div class="container" style="min-height:80vh;">
+        <nav class="navbar navbar-expand-sm navbar-light ">
+        <% include partials/title-logo.ejs %>                      
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarContent">
+                <ul class="navbar-nav  ml-auto mr-4">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Profile
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <p class="dropdown-item">Logged in as:</p>
+                            <p class="dropdown-item">
+                               <legend><%= user.firstName %><br></legend> 
+                               <small class="text-center"><%= user.username %></small> 
+                               <hr>
+                            </p>
+                            <a class="dropdown-item" href="/employers/manage_account">Manage Account</a>
+                            <a class="dropdown-item" href="/employers/delete_account">Delete Account</a>
+                            <a class="dropdown-item" href="/employers/logout">Logout</a>
+                        </div>
+                    </li>    
+                </ul>
+            </div>     
+        </nav>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item ">
+                <a class="nav-link" id="home-tab" href="/employers/dashboard" role="link">Organization Details</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" id="profile-tab" href="/employers/post_internship" role="link">Post an Internship</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/employers/view_posted_internships" role="link">View Posted Internships</a>
+            </li>
+        </ul>
+        <div class="text-center">
+            <small> Need help? <a href="/contact">Contact us!</a></small>   
+            <% if(!user.org_details) {%>
+                <div class="alert alert-danger">
+                    <p>Please update your Organization details to post an internship.</p>
+                    <p><a href="/employers/dashboard">Go back to dashboard</a></p>
+                </div>
+        </div>
+      </div>
+          <%  } else{ %>
+            <legend>Post Internship</legend>
+            <div class="form-container" style="display:inline-block; width:70%;">
+                <h6>Internship Details:</h6>
+                <form method="POST" action="/employers/post_internship">
+                   <b>Category*:<br><br></b> 
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="category" value="Engineering" required >
+                                <label class="form-check-label">
+                                    Engineering
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="category" value="Graphics Design">
+                                <label class="form-check-label">
+                                    Graphics Design
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="category" value="Humanities" >
+                                <label class="form-check-label">
+                                    Humanities
+                                </label>
+                            </div>  
+                            <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="category" value="Science">
+                                <label class="form-check-label">
+                                    Science
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="category" value="Video Editing">
+                                <label class="form-check-label">
+                                    Video Editing
+                                </label>
+                            </div>    
+                        </div>
+                    <div class="col">
+                            <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="category" value="Architecture">
+                                <label class="form-check-label">
+                                    Architecture
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="category" value="Law">
+                                <label class="form-check-label">
+                                    Law
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="category" value="Sports">
+                                <label class="form-check-label">
+                                    Sports
+                                </label>
+                            </div>  
+                            <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="category" value="MBA">
+                                <label class="form-check-label">
+                                    MBA
+                                </label>
+                            </div>  
+                             <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="category" value="Hopsitality">
+                                <label class="form-check-label">
+                                    Hopsitality
+                                </label>
+                            </div>  
+                             <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="category" value="Media">
+                                <label class="form-check-label">
+                                    Media
+                                </label>
+                            </div>  
+                             <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="category" value="Entertainment">
+                                <label class="form-check-label">
+                                    Entertainment
+                                </label>
+                            </div>  
+                        </div>
+                    </div><br>
+                    <b>Internship Profile:*</b>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Eg : Web Development" name="profile">
+                    </div>
+                  <b>Select Internship Type*:<br><br></b> 
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="type" value="Regular"required>
+                                <label class="form-check-label">
+                                    Regular
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="type" value="Work from home" required>
+                                <label class="form-check-label">
+                                    Work From Home
+                                </label>
+                            </div>
+                        </div>
+                    </div><br>
+                    <b>Internship location*:</b><br>
+                    <div class="form-group">
+                        <select name="country" class="form-control countries order-pop" id="countryId" required>
+                            <option value="">Select Country</option>
+                        </select>
+                        <select name="state" class="form-control states order-alpha" id="stateId" required>
+                                <option value="">Select State</option>
+                        </select>
+                        <select name="city" class="form-control cities order-rand limit-pop-10000" id="cityId" required>
+                                <option value="">Select City</option>
+                        </select>
+                        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+                        <script src="//geodata.solutions/includes/countrystatecity.js"></script>
+                    </div><br>
+                    <b>Is part time allowed?*</b><br>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="part_time" value="yes" required>
+                                <label class="form-check-label">
+                                    Yes
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="part_time" value="no" required>
+                                <label class="form-check-label">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </div><br>
+                    <b>Number of openings:</b><br>
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="openings" placeholder="Enter the number of internships available">
+                        </div>
+                    <b>Internship Start Date*:</b><br>
+                    <div class="form-group">
+                        <input type="date" class="form-control" name="start_date" placeholder="Enter the starting date" required>
+                    </div>
+                    <b>Internship Duration*:<br></b>
+                    <div class="form-row">
+                         <div class="form-group col-md-4">
+                            <select class="form-control" name="duration" required>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <select class="form-control" name="durationScale" required>
+                                <option value="months">Months</option>
+                                <option value="weeks">Weeks</option>
+                            </select>
+                        </div>
+                    </div>
+                <h6>Who can apply?</h6>
+                <p>Skills required:<br></p>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="skills" placeholder="List the skills required"></textarea><br>
+                <h6>Intern's Responsibilities:</h6>
+                <p>Selected intern's day to day responsibilities include:<br></p>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="responsibilities" placeholder="List the responsibilites"></textarea><br>
+                <h6>Stipend & Perks:</h6>
+                Stipend(if any):<br>
+              <small><b>Enter a fixed amount or a range:</b></small>  
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <select class="form-control" name="currency">
+                                <option value="₹">₹</option>
+                                <option value="$">$</option>
+                                <option value="£">£</option>
+                                <option value="£">£</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input class="form-control" type="text" name="stipendAmt" placeholder="Ex: 2000 or 2000-3000">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <select class="form-control" name="stipendScale">
+                                <option value="/month">/month</option>
+                                <option value="/week">/week</option>
+                                <option value="lumpSum">lump sum</option>
+                            </select>
+                        </div>
+                    </div>
+
+                 Perks:
+                <div class="form-control">
+                    <input type="checkbox" name="perks" checked>
+                    <label>Certificate</label><br>
+                    <input type="checkbox" name="perks" >
+                    <label>Letter of Recommendation</label><br>
+                    <input type="checkbox" name="perks">
+                    <label>Informal Dress Code</label><br>
+                    <input type="checkbox" name="perks">
+                    <label>Flexible Work Hours</label><br>
+                </div><br>
+
+                Does this  internship have a job offer with internship?
+                <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="jobOffer" value=true>
+                                <label class="form-check-label">
+                                    Yes
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="jobOffer" value=false>
+                                <label class="form-check-label">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </div><br>
+
+                    Is this internship only for women?
+                    <div class="row">
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="onlyWomen" value=true>
+                                    <label class="form-check-label">
+                                        Yes
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="onlyWomen" value=false>
+                                    <label class="form-check-label">
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                        </div><br>
+
+                 <h6>Interview Questions:</h6>
+                 <small>If you want the candidate to attach their work sample, please ask them to upload it to google drive(or similar platforms) and share the link in the answer. </small>
+                 <p>Question 1(default): Why should you be hired for this internship?</p>
+                 <p>Question 2(default):  Are you available for the said period, starting immediately, for the internship? If not, what is the time period you are available for and the earliest date you can start this internship on?</p>
+                 <p>
+                     Question 3:
+                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="question3" placeholder="Enter your Question"></textarea>
+                 </p>
+                 <p>
+                    Question 4:
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="question4" placeholder="Enter your Question"></textarea>
+                </p>
+                <input type="submit" class="btn btn-primary btn-block" value="Post Internship"><br>
+            </form>
+        </div>
+    </div>
+</div>
+          <% } %> 
+
+
+<% include partials/footer.ejs %>
+</body>
+</html>

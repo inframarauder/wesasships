@@ -1,0 +1,8 @@
+
+<% if(student) {%>
+    <a href="/students/dashboard" class="navbar-brand ml-2"><img id='title-img' src="../assets/images/icons/title_logo.jpeg"></a>
+<% }else if(user){ %>
+    <a href="/employers/dashboard" class="navbar-brand ml-2"><img id='title-img' src="../assets/images/icons/title_logo.jpeg"></a>
+<% }else{ %>
+    <a href="/" class="navbar-brand ml-2"><img id='title-img' src="../assets/images/icons/title_logo.jpeg"></a>    
+<% } %>

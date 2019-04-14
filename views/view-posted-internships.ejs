@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--jQuery and Bootstrap JS-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Wesasships|Employers Dashboard</title>
+    <link rel="stylesheet" href="/assets/styles/index-styles.css">
+    <link rel="stylesheet" href="/assets/styles/dashboard-styles.css">
+    <link rel="shortcut icon" type="image/.jpeg" href="/assets/images/icons/Logo.jpeg">
+  </head>
+  <body>
+      <!--top section of the page-->
+      <div class="container" style="min-height:80vh;">
+        <nav class="navbar navbar-expand-sm navbar-light ">
+        <% include partials/title-logo.ejs %>                       
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarContent">
+                <ul class="navbar-nav  ml-auto mr-4">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Profile
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <p class="dropdown-item">Logged in as:</p>
+                            <p class="dropdown-item">
+                               <legend><%= user.firstName %><br></legend> 
+                               <small class="text-center"><%= user.username %></small> 
+                               <hr>
+                            </p>
+                            <a class="dropdown-item" href="/employers/manage_account">Manage Account</a>
+                            <a class="dropdown-item" href="/employers/delete_account">Delete Account</a>
+                            <a class="dropdown-item" href="/employers/logout">Logout</a>
+                        </div>
+                    </li>    
+                </ul>
+            </div>     
+        </nav>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item ">
+              <a class="nav-link" id="home-tab" href="/employers/dashboard" role="link">Organization Details</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" id="profile-tab" href="/employers/post_internship" role="link">Post an Internship</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link active" href="/employers/view_posted_internships" role="link">View Posted Internships</a>
+          </li>
+      </ul>
+
+        <%if (internships.length === 0){ %>
+            <div class="alert">
+                <p>No internships posted!</p>
+            </div>
+     <%   }else{ %>
+        <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Sl.No</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Date Posted</th>
+                    <th scope="col">No. of Applications</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <% for(var i=0; i< internships.length; i++){%>
+                    <tbody>
+                        <tr>
+                            <th scope="row"><%= i+1 %></th>
+                            <td><%= internships[i].category %></td>
+                            <td><%=  internships[i]._id.getTimestamp().toDateString() %> </td>
+                            <td> 
+                                <%= internships[i].applications.length %>
+                               <% if(internships[i].applications.length > 0) {%>
+                                    <a style="font-size: 0.7rem; margin-left: 15px;" href="/internships/view_applications/?id=<%= internships[i]._id %>">View Applications</a>
+                                <% } %>
+                            </td>
+                            <% if(internships[i].closeApplication){%>
+                              <td><span class="text-danger">Application Closed</span></td>
+                          <%  }else{ %>
+                            <td><button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" >Close Applications</button></td>
+                         <% } %>
+                        </tr>
+                    </tbody>
+                    <!--Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Close Applications?</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this internship?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">NO</button>
+                  <a  class="btn btn-secondary text-white" href="/employers/close_applications/<%= internships[i]._id %>">YES</a>
+                </div>
+              </div>
+            </div>
+          </div>
+                <% } %>
+        </table>
+    <%} %>
+
+    </div>
+
+    
+    <% include partials/footer.ejs %>
+  </body>
+  </html>

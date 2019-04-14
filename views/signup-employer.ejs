@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--jQuery and Bootstrap JS-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Wesasships-Sign up|Employer</title>
+    <link rel="stylesheet" href="../assets/styles/signup-styles.css">
+    <link rel="stylesheet" href="../assets/styles/index-styles.css">
+    <link rel="shortcut icon" type="image/.jpeg" href="../assets/images/icons/Logo.jpeg">
+
+  </head>
+  <body>
+      <!--top section of the page-->
+    <nav class="navbar navbar-expand-sm navbar-light ">
+        <a href="/" class="navbar-brand ml-2"><img id='title-img' src="../assets/images/icons/title_logo.jpeg"></a>
+    </nav>
+    <div class="container bg-img">
+          <div class='registration-area ml-auto mr-auto'>
+              <%if (errors){%>
+                <div class="alert alert-danger">
+                   <%= errors.message%> 
+                </div> 
+            <% }%>
+            <%if (messages.errorMessage){%>
+                <div class="alert alert-danger">
+                   <%= messages.errorMessage %> 
+                </div> 
+            <% }%>
+              <form method="POST" action="/employers/signup">
+                  <div class="form-group">
+                    <label for="EmailInput">Official Email</label>
+                    <input type="text" class="form-control" name="username" id="EmailInput" placeholder="eg: companyname@example.com">
+                  </div>
+                  <div class="form-group">
+                    <label for="PassInput">Password</label>
+                    <input type="password" class="form-control" name="password" id="PassInput" placeholder="Minimum 6 characters">
+                    <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="ShowPassChkbx">
+                          <label class="form-check-label" for="ShowPassChkbx">
+                            Show Password
+                          </label>
+                      </div>
+                  </div>
+                      <div class="row" style="padding:5px 5px 10px 5px;">
+                        <div class="col">
+                          <label>First Name</label>
+                          <input type="text" class="form-control " name="FirstName" placeholder="First name">
+                        </div>
+                        <div class="col">
+                            <label>Last Name</label>
+                          <input type="text" class="form-control" name="LastName" placeholder="Last name">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                            <label for="EmailInput">Phone Number</label>
+                            <input type="tel" class="form-control" name="PhoneNumber" id="PhoneInput" placeholder="">
+                          </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="TermsChkbx">
+                            <label class="form-check-label" for="TermsChkbx">
+                              I agree to the <a href="/terms">Terms and Conditions</a>
+                            </label>
+                        </div>
+                      <button id="signupbtn" class="btn btn-primary btn-block disabled" type="button">Sign Up!</button>
+                    
+                      <div class="signup-section text-center">
+                          <p >
+                              Already have an account? <br><a href="/">Sign in!</a>
+                          </p>
+                      </div>
+                  </div>
+              </form>
+            
+    </div>
+    <script>
+        $('#ShowPassChkbx').click(()=>{
+          var type =  $('#PassInput').attr('type');
+          if(type === 'text');
+            $('#PassInput').attr('type','password');
+          if(type === 'password')
+            $('#PassInput').attr('type','text');
+        });
+        $('#TermsChkbx').click(()=>{
+                if($('#TermsChkbx').prop("checked") == true)
+                {
+                    $("#signupbtn").removeClass('disabled');
+                    $("#signupbtn").attr('type','submit');
+                }
+                else{
+                    $("#signupbtn").addClass('disabled');
+                    $("#signupbtn").attr('type','button');
+                }
+            });
+    </script>
+     
+     <% include partials/footer.ejs %>
+
+    </body>
+    </html>

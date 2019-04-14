@@ -1,0 +1,14 @@
+.details-area{
+    border: 1px solid #2d2d2d;
+    border-radius: 8px;
+    background-color:#ffffff;
+    padding: 20px;
+}
+form{
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 70%;
+}
+.danger{
+    border: 1px solid #bb0000;
+}

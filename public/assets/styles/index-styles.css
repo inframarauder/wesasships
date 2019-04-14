@@ -1,0 +1,362 @@
+.error{
+    border: 1px solid #ff9494;
+    border-radius: 4px;
+    text-align:center;
+    background-color:#ff949494;
+    color:red;
+}
+
+
+#title-img{
+    max-height: 70px;
+    max-width: 200px;
+}
+
+@media only screen and (max-width:500px){.container {margin-left:5%;}} 
+@media only screen and (max-width:500px){.card {margin-bottom:5%;}} 
+
+
+.dropdown-header{
+    font-size:  1.1rem;
+    text-decoration-line: underline;
+}
+.dropdown-link{
+    padding: 2px;
+    margin: 5px 5px 5px 5px;
+}
+.popular-message{
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.3rem;
+}
+@media only screen and (max-width:500px){.popular-message {margin-right:15%; font-size: 1rem;}} 
+
+.card-caption{
+    font-size: 0.6rem;
+    color:white;
+    font-weight: bolder;
+    text-transform:uppercase;
+    line-height: 20px;
+    text-shadow: 0 0 8px black;
+}
+#work-from-home{
+    background-image:url("../images/icons/work-from-home.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    text-align: center;
+}
+#Delhi{
+    background-image:url("../images/icons/delhi.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    text-align: center;
+}
+#Hyderabad{
+    background-image:url("../images/icons/hyderabad.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    text-align: center;
+}
+#Chennai{
+    background-image:url("../images/icons/chennai.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    text-align: center;
+}
+#Bangalore{
+    background-image:url("../images/icons/bangalore.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    text-align: center;
+}
+#Mumbai{
+    background-image:url("../images/icons/mumbai.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    text-align: center;
+}
+#Kolkata{
+    background-image:url("../images/icons/kolkata.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    text-align: center;
+}
+#International{
+    background-image:url("../images/icons/international.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    text-align: center;
+}
+#Part-Time{
+    background-image:url("../images/icons/part-time.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    text-align: center;
+}
+#Engineering{
+    background-image:url("../images/icons/engineering.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    text-align: center;
+}
+#Ngo{
+    background-image:url("../images/icons/law.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    text-align: center;
+}
+#Mba{
+    background-image:url("../images/icons/mba.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    text-align: center;
+}
+#Sports{
+    background-image:url("../images/icons/sports.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    text-align: center;
+}
+#Science{
+    background-image:url("../images/icons/science.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    text-align: center;
+}
+#Media{
+    background-image:url("../images/icons/media.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    text-align: center;
+}
+#Humanities{
+    background-image:url("../images/icons/humanities.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    text-align: center;
+}
+
+/*modal styles goes here...*/
+#login-modal{
+    margin-top:50px;
+}
+#login-modal .modal-dialog .modal-content {
+    background: #f7f7f7;
+    max-width: 390px;
+    margin: auto;
+    border: 1px solid #dbdbdb;
+}
+#login-modal .modal-dialog .modal-content .modal-header {
+    border: none;
+    padding: 8px 10px 0px;
+}
+.modal .modal-header {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 0;
+    padding-bottom: 10px;
+}
+
+#login-modal .modal-dialog .modal-content .modal-body #user-menu-container {
+    text-align: center;
+}
+#login-modal .modal-dialog .modal-content .modal-body #user-menu-container #user-menu {
+    max-width: 600px;
+    display: inline-block;
+    width: 100%;
+}
+
+#login-modal .modal-dialog .modal-content .modal-body #user-menu-container #user-menu .user-menu-item.login-student {
+    padding-bottom: 10px;
+    padding-right:60px;
+}
+#login-modal .modal-dialog .modal-content .modal-body #user-menu-container #user-menu .user-menu-item.login-employer {
+    padding-left:60px;
+    padding-bottom: 10px;
+}
+#login-modal .modal-dialog .modal-content .modal-body #user-menu-container #user-menu .user-menu-item.login-student.active {
+    color:#1295c9;
+    border-bottom: 2px solid #1295c9;
+}
+#login-modal .modal-dialog .modal-content .modal-body #user-menu-container #user-menu .user-menu-item.login-employer.active {
+    color:#1295c9;
+    border-bottom: 2px solid #1295c9;
+}
+#login-modal .modal-dialog .modal-content .modal-body #user-menu-container #user-menu .user-menu-item {
+    font-size: 15px;
+    display: inline-block;
+    font-style: normal;
+    font-weight: 600;
+    cursor: pointer;
+}
+.forgot-msg{
+    padding: 5px 5px 5px 5px;
+    font-size: 1rem;
+}
+.signup-section{
+    padding : 5px 5px 5px 5px;
+    margin-top: 10px;
+}
+#google-sign-in{
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px;
+}
+.display-flex{
+    display: flex;
+}
+.display-none{
+    display: none;
+}
+.display-block{
+    display: block;
+}
+.google-icon{
+    max-width: 40px;
+    max-height: 40px;
+}
+#googlebtn{
+    background-color:white;
+    border: 1px solid;
+    padding: 5px;
+}
+.lower-section{
+    margin-top:5%;
+    background-color: #2d2d2d;
+    border:1px solid #dbdbdb;
+}
+.bottom-styles{
+    text-align: center;
+    color: white;
+}
+.bottom-heading{
+    font-size: 15px;
+    text-decoration-line: underline;
+}
+.text-white{
+    color:#dbdbdb;
+    margin:5px 5px 5px 5px;
+}
+@media only screen and (max-width:500px){ .bottom-heading , .text-white {font-size: 10px;}} 
+
+
+.all-internships{
+    min-height: 100vh;
+}
+
+.filter-area{
+    border:1px dotted #ccc;
+    overflow: auto;
+}
+@media only screen and (max-width:500px){.filter-area{max-height: 5cl0vh;overflow: auto; margin-left: 10%;}}
+.search-form{
+    padding:5px;
+    margin-top: 5px;
+}
+.filter-toggle{
+    cursor: pointer;
+}
+.filter-toggle:hover{
+    text-decoration-line: underline;
+    opacity: 0.7;
+}
+.filter-form{
+    margin:10px 10px 10px 10px;
+    padding:5px;
+    font-size: 0.8rem;
+}
+.show{
+    display: inline-block;
+}
+.hide{
+    display: none;
+}
+
+.internships-area{
+    width: 75%;
+    margin-left:10%;
+    border:1px solid #ccc;
+    border-radius: 8px;
+    padding:10px;
+    color:#808080;
+}
+@media only screen and (max-width:500px){.internships-area{width: 100%; margin-left: 0; font-size: 0.8rem;}}
+.internship-title{
+    font-size:1.2rem;
+    color:#1295c9;
+}
+
+.company-logo img{
+    height: 50px;
+    max-width: 200px;
+    float: right;
+}
+
+.premium-ad{
+    color: #1295c9;
+    padding: 5px;
+    border:1px solid #1295c9;
+    border-radius: 4px;
+}
+
+.payment-area{
+    padding: 10px;
+    color: #1295c9;
+    border: 1px solid #1295c9;
+    border-radius: 12px;
+    width: 60%;
+    margin-top: 3%;
+    margin-left: 15%;
+    margin-right: 25%;
+}
+@media only screen and (max-width:500px){.payment-area{width: 90%; margin-left:5%;}}
+
+
+#paymentform{
+    display: inline-block;
+    width: 50%;
+    padding: 10px;
+    text-align: left
+}
+@media only screen and (max-width:500px){#paymentform{width: 90%;}}
+
+.quiz-area{
+    border: 1px solid #1295c9;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top:2%;
+    overflow: auto;
+}
+
+.interview-area{
+    text-align: center;
+    padding: 1%;
+    
+}
+.interview-form{
+    display: inline-block;
+    padding: 5%;
+    text-align: left;
+    width: 70%;
+    border: 1px solid #1295c9;
+    border-radius:8px;
+}
+
+.interview-review{
+    font-size: 0.9rem;
+    display: inline-block;
+    text-align: left;
+    margin-top:1%;
+    padding: 5%;
+    border: 1px solid #1295c9;
+    border-radius:8px;
+    width: 70%;
+}
+#selectbutton,#rejectbutton{
+margin:10px;
+}

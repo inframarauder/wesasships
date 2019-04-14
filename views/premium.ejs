@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--jQuery and Bootstrap JS-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Wesasships|Dashboard-student</title>
+    <link rel="stylesheet" href="../assets/styles/index-styles.css">
+    <link rel="stylesheet" href="../assets/styles/dashboard-styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" type="image/.jpeg" href="../assets/images/icons/Logo.jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  </head>
+  <body>
+    <div class="container" style="min-height: 80vh;">
+        <!--top section of the page-->
+      <nav class="navbar navbar-expand-sm navbar-light ">
+          <a href="/" class="navbar-brand ml-2"><img id='title-img' src="../assets/images/icons/title_logo.jpeg"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse " id="navbarContent">
+              <ul class="navbar-nav ml-auto mr-4">
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Profile
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <p class="dropdown-item">Logged in as:</p>
+                          <p class="dropdown-item">
+                             <legend><%= student.firstName %> <%= student.lastName %><br></legend> 
+                             <small class="text-center"><%= student.username %></small> 
+                             <hr>
+                             <% if(student.premium_user){ %>
+                              <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                              <small class="text-center text-info">Premium User</small> 
+                            <% } %>
+                          </p>
+                          <a class="dropdown-item" href="/students/manage_account">Manage Account</a>
+                          <a class="dropdown-item" href="/students/delete_account">Delete Account</a>
+                          <a class="dropdown-item" href="/students/logout">Logout</a>
+                      </div>
+                  </li>    
+              </ul>
+          </div>     
+      </nav>
+    <% if(!student.premium_user){ %>
+      <div class="premium-ad">
+        <p class="text-center">
+            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+          A Premium Profile lets you add any number of skills to your resume.<br>
+          Upgrade today, at just Rs.499!
+        </p>
+      </div>
+
+      <div class="payment-area text-center">
+        <p>Enter your details here to access the payment gateway:</p>
+          <form method="POST" action="/premium_profile"  id="paymentform">
+            <label>Email :</label>
+            <input class="form-control" type="email" name="email" value="<%= student.username %>">
+            <label>Phone:</label>
+            <input class="form-control" type="tel" name="phone" value="<%= student.phoneNumber %>">
+            <div class="form-group row">
+              <div class="col">
+                <label>First Name:</label>
+                <input class="form-control" type="text" name="firstName" value="<%= student.firstName %>">
+              </div>
+              <div class="col">
+                <label>Last Name:</label>
+                <input class="form-control" type="text" name="lastName" value="<%= student.lastName %>">
+              </div>
+            </div>
+            <input type="submit" class="btn btn-primary btn-block" value=" Proceed to Pay Rs.499">
+        </form>
+      </div>
+   <% }else{ %>
+    <div class="premium-ad">
+      <p class="text-center">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+        Congratulations, you are a premium user!<br>
+        Keep adding more skills and build a stronger resume.
+      </p>
+      <p class="text-center">
+        <a href="/students/dashboard" class="btn btn-primary">Continue building resume.</a>
+      </p>
+    </div>
+   <% } %>   
+  </div>
+
+
+    <% include partials/footer.ejs %>
+</body>

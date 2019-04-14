@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--jQuery and Bootstrap JS-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Wesasships</title>
+    <link rel="stylesheet" href="/assets/styles/index-styles.css">
+    <link rel="shortcut icon" type="image/.jpeg" href="/assets/images/icons/Logo.jpeg">
+  </head>
+    <body>
+        <nav class="navbar navbar-expand-sm navbar-light ">
+            <% if(user){%>
+                <a href="/students/dashboard" class="navbar-brand ml-2"><img id='title-img' src="/assets/images/icons/title_logo.jpeg"></a>
+            <% }else{ %>
+                <a href="/" class="navbar-brand ml-2"><img id='title-img' src="/assets/images/icons/title_logo.jpeg"></a>
+       <%     } %>
+        </nav>
+        
+        <div class="container">
+            <div class="internships-area">
+                <% if(internship.company_details.logo){ %>
+                <div class="company-logo"><img src="/uploads/<%= internship.company_details.logo %>"></div>
+              <%  } %>
+                <div class="internship-title"><%= internship.profile %> </div>
+                <b style="font-size: 0.8rem;"><%= internship.category %></b>       <br>         
+                <b style="font-size: 0.8rem;"><%= internship.company_details.org_name %></b>
+                <p>Location: <%= internship.location.city %>,<%= internship.location.country %></p> 
+                <% if(internship.onlyWomen){ %>
+                    <small class="text-info" style="float:right;">Only Women.</small>
+              <% } %><br>               
+                <div class="row">
+                    <div class="col">
+                        Start date:
+                    </div>
+                    <div class="col">
+                        Duration:
+                    </div>
+                    <div class="col">
+                        Stipend:
+                    </div>
+                    <div class="col">
+                        No of openings:
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <%= internship.start.toLocaleDateString() %>
+                    </div>
+                    <div class="col">
+                        <%= internship.duration %> <%= internship.durationScale %>
+                    </div>
+                    <div class="col">
+                        <%= internship.currency %> <%= internship.stipendAmt %><%= internship.stipendScale %>
+                    </div>
+                    <div class="col">
+                        <%= internship.openings %>
+                    </div>
+                </div><br>
+                <p class="text-info">
+                    <%= internship.type %>
+                    <span  style="float:right">
+                        <% if(internship.part_time) { %>
+                            Part time allowed
+                        <% }else{ %>
+                            Full Time
+                       <% } %>
+                        </span>
+                </p>  
+                <% if(internship.jobOffer){ %>
+                    <h5 class="text-info">This internship comes with a job offer!</h5>
+              <%  } %>
+            </div><br>
+            <div class="internships-area">
+                <% if(internship.company_details.description){ %>
+                    <p>
+                        <h5>About <%= internship.company_details.org_name %></h5>
+                        <small>
+                            (<a href="<%= internship.company_details.website %>" target="blank"><%= internship.company_details.website %></a>)
+                        </small>
+                        <br>
+                        <%= internship.company_details.description %>
+                    </p>
+               <% } %>
+               <% if(internship.responsibilities) { %>
+                <h5>Intern's day to day responsibilities include :</h5>
+                <%= internship.responsibilities %>
+            <%  } %>
+            <br><br>
+            <% if(internship.skills) {%>
+                <h5>Skills Required :</h5>
+                <%= internship.skills %>
+            <% } %>
+            <br><br>
+            <% if(internship.perks){ %>
+                <h5>Perks :</h5>
+                <ol>
+                    <% for(var i=0; i< internship.perks.length; i++){ %>
+                        <li><%= internship.perks[i] %></li>
+                   <% } %>
+                </ol>
+          <%  } %>
+          <div  class="text-center">
+           <% if (user) {%>
+            <% if(alreadyApplied){%>
+                <a href="" class="btn btn-primary btn-lg disabled">Already Applied!</a>                        
+           <% }else{%>
+                <a href="/students/dashboard/apply_internship/?id=<%= internship._id %>" class="btn btn-primary btn-lg">Apply Now!</a>        
+          <% } %>
+         <%}else{ %> 
+            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal" >Log in to Apply Now!</button>        
+        <%  }  %>
+      <!-- <button class="btn btn-primary btn-lg disabled">Applications  shall start soon!</button>-->
+          </div>
+            </div>
+        </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div class="display-flex" id="google-sign-in">
+                    <a type="button" class="btn btn-block" id="googlebtn" href="/students/signup/google">
+                            <img class="google-icon" src="/assets/images/icons/google.png">
+                          Sign in with Google
+                    </a> 
+                  </div>
+                  <div class='display-block' id='divider'>
+                      <hr>
+                      <p class='text-center'>OR</p>
+                  </div>
+                <div class="modal-body">
+                  <form method="POST" action="/students/login">
+                        <div class="form-group">
+                          <label for="EmailInput">Email</label>
+                          <input type="text" class="form-control" id="EmailInput" name="username" placeholder="Registered email id">
+                        </div>
+                        <div class="form-group">
+                          <label for="PassInput">Password</label>
+                          <input type="password" class="form-control" id="PassInput" name="password" placeholder="Minimum 6 characters">
+                          <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ShowPassChkbx">
+                                <label class="form-check-label" for="ShowPassChkbx">
+                                  Show Password
+                                </label>
+                            </div>
+                        </div>
+                        <div class='forgot-msg text-center'>
+                                <a id="forgotLink" href="/students/forgot">Forgot Password?</a>
+                        </div>
+                        <button class="btn btn-primary  btn-block" type="submit">Log in </button>
+                        <div class="signup-section text-center">
+                            <p >
+                                Dont have an account? <br>Sign up!(
+                                <a href="/students/signup">Student</a>
+                                /
+                                <a href="/employers/signup">Employer</a>)
+                            </p>
+                        </div>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--JavaScript for Modal Operations/Functions-->
+        <script>
+            $('#ShowPassChkbx').click(()=>{
+              var type =  $('#PassInput').attr('type');
+              if(type === 'text');
+                $('#PassInput').attr('type','password');
+              if(type === 'password')
+                $('#PassInput').attr('type','text');
+            });
+        </script>
+        <% include partials/footer.ejs %>
+
+    </body>
+</html>

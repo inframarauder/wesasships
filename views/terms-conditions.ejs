@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!--jQuery and Bootstrap JS-->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <title>Wesasships|About us</title>
+        <link rel="stylesheet" href="../assets/styles/index-styles.css">
+        <link rel="stylesheet" href="../assets/styles/manage-account-styles.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="shortcut icon" type="image/.jpeg" href="../assets/images/icons/Logo.jpeg">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+             .info-area{
+                border:1px solid #1295c9;
+                border-radius: 8px;
+                max-width: 80vw;
+            }
+            .terms-info{
+                margin: 5%;
+            }
+            ul{
+                list-style-type: none;
+            }
+            ul li{
+                padding: 1%;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm navbar-light ">
+            <a href="/" class="navbar-brand ml-2"><img id='title-img' src="../assets/images/icons/title_logo.jpeg"></a>
+        </nav>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container info-area bg-white text-center">
+                <div class='terms-info'>
+                    <% if (type === 'terms') { %>
+                    <legend>Terms & Conditions:</legend>
+                    <div class="text-left">
+                            Welcome to wesasships.com, (herein after referred to as the "Site"), a portal of Webbed Services & Softwares (herein after referred to as the WESAS). These terms and conditions of use ("Terms") constitute a legal agreement between you and WESAS. Use of this Site constitutes your unconditional acceptance of these Terms herein and by all terms, policies and guidelines incorporated by reference. These Terms apply to your use of this Site, and do not alter in any way the terms or conditions of any other agreement you may have with WESAS, its subsidiaries or affiliates. If you are using the Site on behalf of any entity, you further represent and warrant that you are authorized to accept these Terms on such entity's behalf, and that such entity agrees to indemnify WESAS for violations of these Terms. If you do not agree with these terms, please do not use this Site.
+                    </div><br>
+                    <legend>Registration Data and Account Security</legend>
+                    <div class="text-left">
+                            In consideration of your use of the Site, you agree to:<br>
+                            <ul>
+                                <li>(a) provide accurate, current and complete information about you as may be prompted by any registration forms on the Site ("Registration Data"); </li>
+                                <li>(b) maintain and promptly update the Registration Data, and any other information you provide to Company, to keep it accurate, current and complete; </li>
+                                <li>(c) maintain the security of your password and identification;</li>
+                                <li>(d) notify WESAS immediately of any unauthorized use of your account or other breach of security; </li>
+                                <li>(e) accept all responsibility for any and all activities that occur under your account;</li>
+                                <li>(f) accept all risks of unauthorized access to the Registration Data and any other information you provide to Company. Please refer to our <a href="/privacy">Privacy Policy</a>  for more details on how we collect, store, use, and retain your data on the Site.</li>
+                            </ul>
+                    </div><br>
+                    <legend>Most Important Terms & Conditions for Employers</legend>
+                    <div class="text-left">
+                            These Terms & Conditions, specifically for employers, are in addition to the other generic Terms & Conditions listed on the page which are common to all the users of the site. Any violation of these T&Cs may result in an employer’s internship being declined for publication on Wesasships or his/her account being permanently blocked.<br>
+                          <hr>  <h5>Internship Posting T&Cs:</h5>
+                          <ul>
+                              <li>1. It is your responsibility to ensure that you are authorized to post internships on your organization’s behalf. Any dispute or legal claim arising out of unauthorized posting would be solely your liability and you indemnify Wesasships of any and all possible consequences of such actions.</li>
+                              <li>2. If you upload your organization’s logo while posting your internship or creating/updating your company profile, you are authorizing Wesasships to display it on our website along with internship post or in the list of our clients. It is your responsibility to ensure that you are duly authorized to share your organization logo with 3rd parties and allow them to use it.</li>
+                              <li>3. Wesasships reserves the right to publish the internship post of companies on social media handles like LinkedIn, Indeed etc, and newspapers in order to increase the visibility of the internship post.</li>
+                              <li>4. You must provide accurate and complete details about the organization and the internship – too brief or too vague a description of the organization, or internship profile results in poor quality internship post and hence may get declined. Any act of misinformation or hiding material information would result in your account being permanently blocked.</li>
+                              <li>5. You may be asked for documents in the name of your company for our first-time user authentication process. This information will only be used for authentication purposes and will not be used anywhere else in any form.</li>
+                            </ul>
+                            <hr>
+                            <h5> Wesasships does not allow::</h5>
+                            <ul>
+                                <li>1.Unpaid internships, except for NGOs/NPOs & some niche profiles (Law, Experimental Physics, Library Science, and the likes).</li>
+                                <li>2.Training program and any such program where students are expected to pay a security deposit or an admission fee.</li>
+                                <li>3.Modelling internships from unknown or lesser known companies.</li>
+                                <li>4.Network Level Marketing (NLM) internships.</li>
+                                <li>5.Any internship where there is a possibility for an intern of consuming alcohol or smoking or inducing others to do so, as the majority of our users are underage.</li>
+                                <li>6.Businesses promoting explicit religious content, a particular religious personality or a sect etc. are not allowed to post internships on Wesasships.</li>
+                                <li>7.Businesses promoting or dealing in gambling and related games.</li>
+                                <li>8.Third party internship posting. You can post internships only for the organization that you directly work for. Recruiting agencies or any third party agencies are not authorized to post internships on their clients’ behalf. Any such internships will be declined and the account may be permanently blocked on Wesasships.</li>
+                            </ul>
+                            <hr>
+                            <h5>Hiring T&Cs:</h5>
+                            <ul>
+                                <li>1.It is your responsibility to ensure that there is no material difference between the internship details that are advertised on Wesasships and the details that are communicated to students later in the selection process (pre-interview, in offer letter etc.). Any ‘negative’ material difference (such as offered stipend being lower than what was advertised) may result in your account being permanently blocked on Wesasships.</li>
+                                <li>2.You must respond to any student complaints regarding your internship post that we may bring to your notice within 72 working hours. Failure do so may result in temporary suspension of your internship post till we receive a response from you.</li>
+                                <li>3.If you come across any suspicious activity, content or behaviour on Wesasships by a student or another user, you must report it to Wesasships immediately so that necessary actions can be taken.</li>
+                                <li>4.While we put our best efforts to reach out to the best intern talent available in the country, posting your internship on Wesasships does not guarantee hiring of an intern.</li>
+                            </ul>
+                            <hr>
+                            <h5>General T&Cs:</h5>
+                            <ul>
+                                <li>1.You can use the applicants’ data that you receive for your internship solely for the purpose of intern hiring. Any attempt to send any other communication (promotional content for example) to the applicants or any other usage of the data is strictly prohibited.</li>
+                                <li>2.You are strictly prohibited from transferring/selling/sharing applicants’ data, for free or for a fee, to any other entity. Any such attempt would result in your account on Wesasships being permanently blocked and would be liable for legal action against you and your organization.2.We take our users’ data privacy and protection very seriously and have zero tolerance policy towards it. </li>
+                                <li>3.Wesasships reserves the right to publish the internship post of companies on social media platforms and websites like LinkedIn, Indeed, Sheroes, Qween, etc., along with newspapers and magazines in order to increase the visibility of the internship post.</li>
+                            </ul>
+                            <hr>
+                            <h5>Most Important Terms & Conditions for Student Users:</h5>
+                            These Terms & Conditions, specifically for student users, are in addition to the other generic Terms & Conditions listed on the page which are common to all the users of the site. Any violation of these T&Cs may result in a student’s internship application being declined or his/her account being permanently blocked.<br>
+
+                            <ul>
+                                <li>1.If you have applied for an internship on Wesasships and receive a communication from Wesasships or hiring organization regarding your application, you must respond to it with-in 72 hours.</li>
+                                <li>2.Once you accept an internship offer, you must make every possible effort to join and start the internship on time. To not show up or to decline an earlier accepted internship offer at the last moment, or to go incommunicado creates a very poor impression of you in front of the employer and reduces the credibility of the student community at large. Any such behaviour will not only result in your account being blocked on Wesasships but we will also report it to your college administration.</li> 
+                                <li>3.You must provide with accurate and complete information at the time of internship application or creating an account on Wesasships – any misrepresentation of information, or hiding of material information, or impersonation would result in your account being blocked on the site and you being reported to your college administration.</li>
+                                <li>4.You must pay attention to an internship’s complete details (profile, start date, location, duration, whether paid or unpaid, skills required etc.) before applying for it. Irrelevant applications will result in your account being penalized (we may stop you from applying to future internships or block you account all together)</li>
+                                <li>5.You are strictly prohibited from transferring/selling/sharing employer’ data (contact details etc.), for free or for a fee, with any other entity. Any such attempt would result in your account on Wesasships being permanently blocked and would be liable for legal action against you. We take our users’ data privacy and protection very seriously and have zero tolerance policy towards it.</li>
+                                <li>6.Wesasships student community is a community of sincere students who are known for and expected to demonstrate high standards of professionalism in their dealings with other users and employers – you are required to maintain these standards and decorum of the community.</li>
+                                <li>7.If you come across any suspicious activity, content or behaviour on Wesasships by an employer or another user, you must report it to Wesasships immediately so that necessary actions can be taken – this is both your duty and obligation.</li>
+                                <li>8.While we make our best efforts to bring you the best internship opportunities possible, Wesasships does not guarantee an internship to a student.</li> 
+                                <li>9.Upon registration, your registered email id and phone number will be automatically subscribed to receive email and SMS notifications from Wesasships. You may opt out of it anytime.</li>  
+                            </ul>
+                    </div><br>
+                    <legend>Rights to Website and Contents thereof:</legend>
+                    <div class="text-left">
+                            This Site is owned and operated by WESAS. All the content featured or displayed on this Site, including, but not limited to, text, graphics, data, images(photographic and moving), illustrations, software and selection and arrangement thereof ("Content"), is owned by WESAS. All elements of this Site, including, but not limited to, the general design and the Content thereof, are protected by copyright, moral rights, trademark and other laws related to the protection of intellectual property rights. Except for, as explicitly permitted under this, or other written license or agreement with WESAS, no portion or element of this Site or its content may be copied or retransmitted via any means. All related rights shall remain the exclusive property of WESAS, its licensors or its third-party image partners.
+                    </div><br>
+                    <legend>Using the Website:</legend>
+                    <div class="text-left">
+                            This Site and its Content are intended for Users of wesasships.com, the division of WESAS. You may not use this Site or the content for any purpose, which is not related to your business with wesasships.com. Any use of the Content, this Site or any of its functionality for a purpose not permitted by these Terms is grounds for the immediate revocation of any usernames, pass codes or other permissions that may have been granted by wesasships.com on behalf of WESAS for use of this Site. You are specifically prohibited from: (i) downloading, copying, or retransmitting any or all of the Site or the Content without, or in violation of, a written license or agreement with WESAS; (ii) using any data mining or similar data gathering or extraction methods; (iii) manipulating or otherwise displaying the site or the content by using, framing or similar navigational technology; (iv) registering, subscribing, unsubscribing, or attempting to register, subscribe any party for any the site if you are not expressly authorized by such party to do so; and (v) using the Site or Content other than for its intended purpose. Such unauthorized use may also violate applicable laws including without limitation copyright and trademark laws, the laws of privacy and publicity, and applicable communications regulations and statutes. You represent and warrant that you will comply with all applicable regulations, including, without limitation, those relating to the internet, data, e-mail, privacy and the transmission of technical data exported from India or the Country in which you reside.
+                    </div><br>
+                    <legend>Trademarks:</legend>
+                    <div class="text-left">
+                            WESAS’s Trademarks, the WESAS’s logo, and any other product or service name or slogan contained in the Site are trademarks of WESAS and its suppliers or licensors, and may not be copied, imitated or used, in whole or in part, without the prior written permission of WESAS or the applicable trademark holder. You may not use meta-tags or any other "hidden text" utilizing content or any other name, trademark or product or service name of WESAS without our prior written permission. In addition, the look and feel of the Site, including all page headers, Site name and logo, custom graphics, button icons and scripts, is the service mark, trademark and/or trade dress of WESAS and may not be copied, imitated or used, in whole or in part, without our prior written permission. All other trademarks, registered trademarks, product names and company names or logos mentioned in the Site are the property of their respective owners. Reference to any products, services, processes or other information, by trade name, trademark, manufacturer, supplier or otherwise does not constitute or imply endorsement, sponsorship or recommendation thereof by us.
+                    </div><br>
+                    <legend>Indemnity:</legend>
+                    <div class="text-left">
+                            You agree to defend, indemnify and hold harmless WESAS, its subsidiaries, affiliates, licensors, employees, agents, third party information providers and independent contractors against any claims, damages, costs, liabilities and expenses (including, but not limited to, reasonable attorneys' fees) arising out of or related to any User Content that you post, store or otherwise transmit on or through the Site, your conduct, your use or inability to use the Site, your breach or alleged breach of the Site Terms or of any representation or warranty contained herein, your unauthorized use of the Content, or your violation of any rights of another. Further you shall indemnify WESAS, its subsidiaries, its affiliates and licensors against any loss, expense, cost or damage incurred by any or all of them as a result of your breach of these Terms or your unauthorized use of the Content or the Site.
+                    </div><br>
+                    <legend>Termination:</legend>
+                    <div class="text-left">
+                            Notwithstanding any of these Site Terms, WESAS reserves the right, without notice and in its sole discretion, to terminate your account and/or to block your use of the Site.
+                    </div><br>
+                    <legend>Changes to Site Terms:</legend>
+                    <div class="text-left">
+                            WESAS reserves the right to change any of the terms and conditions contained in the Site Terms or any policy or guideline of the Site, at any time and in its sole discretion. Any changes will be effective immediately upon posting on the Site. Your continued use of the Site following the posting of changes will constitute your acceptance of such changes. We encourage you to review the Site Terms whenever you visit the website.
+                    </div><br>
+                    <legend>Chargeback:</legend>
+                    <div class="text-left">
+                        You hereby expressly agree that once you or any other person have started the process of downloading content from the site by expressly, without reservation, agreeing to the terms and conditions of the site and license agreement, by clicking and accepting them and have further submitted your credit card/ any other card details to the site/internet banking service provider for payment and your account gets debited no chargeback claim/dispute with regard to the failure of delivery of Product/ Content or the use/misuse of such credit card or any other card, filed by you/on your behalf with the Credit Card Provider/Internet banking service provider or any Bank/Financial Institution shall be binding on WESAS or WESAS’s Merchant Bank. You accept and take full responsibility towards the ownership/possession and use of your credit card or any other card. You expressly waive and consciously give up any/all rights you may have in law or in any agreement between you and the credit card or any other card provider/internet service provider or under network rules and regulations to raise any dispute to claim any charge back or any process fee from any Bank/Financial Institution/ Internet banking service provider affecting WESAS in any manner pecuniary or otherwise on any grounds whatsoever including non delivery of Product/Content or fraudulent or improper transactions by the unauthorized/improper use of your credit/debit card or any other card. This understanding that you will have no right to claim any charge back is a material condition of this agreement and once you hereby expressly agree to it you shall be stopped from challenging/disputing it in any adjudication/proceeding before any Bank/Financial institution/ Internet banking service provider or Court or otherwise. Without prejudice to WESAS’s right to defend its interest(s), WESAS shall not be made a party to any chargeback proceedings before any Bank/Financial institution/ Internet banking service provider or court and in no case be required to prove the transaction effected by the use of your credit/debit or any other card was legitimate and genuine, or that WESAS has actually provided you the downloaded content.
+                    </div><br>
+                    <legend>Disclaimers:</legend>
+                    <div class="text-left">
+                            This site and its content are provided "as is" and WESAS and its directors, employees, content providers, agents and affiliates exclude, to the fullest extent permitted by applicable law, any warranty, express or implied, including, without limitation, any implied warranties of merchantability, satisfactory quality or fitness for a particular purpose. WESAS will not be liable for any damages of any kind arising from the use of this site. The functions embodied on or in the materials of this site are not warranted to be uninterrupted or without error. You, not Wesasships, assume the entire cost of all necessary care or correction due to your use of this site or content. Wesas makes no warranty that the site or the content is free from infection by viruses or anything else that has contaminating or destructive properties. WESAS uses reasonable efforts to ensure the accuracy, correctness and reliability of the Content, but we make no representations or warranties for the same. Images of people or places displayed on the Site are either the property of, or used with permission by, WESAS or third parties. The use of these images by you, or anyone else authorized by you, is prohibited unless specifically permitted by these Terms or specific permission provided elsewhere on the Site or by separate license or agreement. Any unauthorized use of these images may violate copyright laws, trademark laws, the laws of privacy and publicity, and other applicable laws.
+                    </div><br>
+                    <legend>Severance & Waiver:</legend>
+                    <div class="text-left">
+                            No action of WESAS, other than an express written waiver or amendment, may be construed as a waiver or amendment of any of these Terms. If any clause in these Terms is found to be unenforceable, wherever possible, it will not affect any other clause and each will remain in full force and effect. We reserve the right to change these Terms, the Content displayed on the Site, any license contained on the Site and any other information or license terms without prior notice. These Terms set out the entire agreement between WESAS and you relating to your use of this Site. Any rights not expressly granted herein are reserved.
+                    </div><br>
+                    <legend>Jurisdiction:</legend>
+                    <div class="text-left">
+                            All license agreements, use or any issues arising out of any activity regarding the use of this website will be governed by the laws of India and subject to exclusive jurisdiction of courts in the State of West Bengal.
+                    </div>
+                <% } %>
+                <% if (type === 'services') { %>
+                    <legend>Our Services:</legend>
+
+                </div>
+                <% } %>
+                <% if (type === 'privacy') { %>
+                    <legend>Privacy Policy:</legend>
+                    <div class="text-left">
+                            This Privacy Policy applies to the online services offered by Wesasships at wesasships.com, its subdomains and Wesasships’ app on Google Play Store. These are henceforth collectively known as Services.
+                    </div><br>
+                    <hr>
+                    <div class="text-left">
+                        <h5>Overview:</h5>
+                        <p>We respect your privacy and strive to provide a safe, secure user experience. This privacy statement sets forth our online data collection and usage policies and practices. By using our services, you consent to the policies and practices described in this statement. Your data will be stored and processed on our servers which may be inside or outside India and your usage of the Services constitutes consent to the transfer of your data out of India. Our Services may contain links to other website over which we have no control and we are not responsible for the privacy policies or practices of other websites to which you navigate from our Services. We encourage you to review the privacy policies of these other websites so you can understand how they collect, use and share your information. This privacy statement applies solely to the information we collect on wesasships.com and its sub-domains and not to information collected otherwise.</p>
+                        <h5>Collection of Information:</h5>
+                        <p><strong>Personal information provided by you:</strong>  In some areas of our Services, we request you to provide or submit personal information including your name, address, e-mail address, telephone number, contact information, billing information, education details, work place details, and any other information from which your identity is discernible. Wesasships also collects or may collect demographic information that is not unique to you such as your ZIP code, age, preferences and gender. Example of such a situation could include, but is not limited to when you sign up to use our service, post a resume or enter a contest or survey.</p>
+                        <p><strong>Information collected when you use third party services:</strong>We may indirectly collect information about you when you use certain third party services on our Services; such information will be subject to, and treated in accordance with, the policies and practices described in this Statement and can be used by Wesasships as it deems fit. We may collect, process and store your information associated with your Google account if you choose to sign in using Google. When you sign in to your account with your Google account information, you consent to our collection, storage, and use of the information that you make available to us through your Google account in accordance with this Privacy Policy. This could include your name, email address and phone number associated with your Google account.</p>
+                        <p><strong>Information about your contacts:</strong> When you choose to share content on Wesasships with friends using the Google+ share feature and sign in using your Google account, we may collect, process and store information of the contacts (email addresses of contacts) associated with your Google account. Also, when you share content with your friends through SMS share option on Wesasships, we may collect, process and store information of the contacts (phone numbers) to whom you choose to send the SMS.</p>
+                        <p><strong>Information collected through use of service:</strong>: We also gather or may gather certain information about your use of our Services, such as what areas you visit and what features you access. Moreover, there is information about your computer hardware and software that is or may be collected by us. This information can include without limitation your IP address, browser type, domain names, access times and referring website addresses and can be used by Wesasships as it deems fit.</p>     
+                    </div>
+                </div>
+                <hr>
+                <div class="text-left">
+                    <h5>Retention of Information:</h5>
+                    <p>Since we believe that managing your career is a life-long process, we retain indefinitely all the information we gather about you in an effort to make your repeat use with us more efficient, practical, and relevant. You can correct or update your account profile and resume at any time. You may choose to delete your account, following which we will either delete or de-identify the data.</p>
+                </div>
+                <hr>
+                <div class="text-left">
+                    <h5>Sharing of information:</h5>
+                    <ul>
+                        <li>If you are an employer, information related to your internship post such as organisation name, URL, and description, internship description, skills required etc. is published online and can be viewed by anyone visiting Wesasships site and app. This information may also appear in search websites like Google. Further, we may share your personal information (including contact details) with students who apply to your internships or get hired by you through Wesasships.</li>
+                        <li>If you are an applicant, we may share your personal information with employers whose internships you apply to or whose internships we feel may be relevant for you or who may come across your profile through a search of our user base.</li>
+                        <li>We may share your information with third party individuals, contractors, companies and other service providers that perform services on our behalf or in partnership with us. For example, we may require to pass on your data to a partner who might be responsible for the delivery of a training program that you may have voluntarily signed up for.</li>
+                        <li>Additionally, you may have the option to share your information and activities on Wesasships through social media. We do not have control over information shared with third party social networks and you should review the policies of those networks before consenting to share information with them.</li>
+                        <li>If you post any of your personal information in public areas of Wesasships, such as in online forums, chat rooms, comments section etc. this information will be accessible to everyone on the public internet. It may be collected and used by others over whom Wesasships has no control. We are not responsible for the use made by third parties of information you post or otherwise make available in public areas of this website.</li>
+                        <li>When we send you an email or SMS, we use a third party service. In this case, it becomes necessary to pass on your email address/ mobile number to the third party. While we only work with reputed service providers in this regard, we are not responsible for the use made by them of this information.</li>
+                        <li>Wesasships reserves the right to publish the internship post of companies on social media platforms and 3rd party websites like LinkedIn, Indeed, Sheroes, Qween, etc., along with newspapers and magazines, in order to increase the visibility of the internship post.</li>
+                        <li>We may also share your information in order to investigate, prevent, or take action about possible illegal activities or to comply with legal process. We may also share your information with third parties to investigate and address violations of this Privacy Policy or the Terms of Service, or to investigate and address violations of the rights of third parties and/or Wesasships, our employees, users, or the public. This may involve the sharing of your information with law enforcement, government agencies, courts, and/or other organizations.</li>
+
+                    </ul>
+                </div>
+                <hr>
+                <div class="text-left">
+                    <h5>Editing information:</h5>
+                    <p>If you are a student, you may edit your personal information and profile by visiting your resume section. Certain data (such as applications you may have made) cannot be edited.
+                    If you are an employer, you may edit your personal information and information about your organization by visiting the profile (personal details and organization details) section. Certain data (such as internships you may post, applications you may have processed) cannot be edited.</p>
+                </div>
+                <hr>
+                <div class="text-left">
+                    <h5>Downloading information:</h5>
+                    <p>Our customer support team will be happy to help you with this. Please write to us at <span class="text-info">privacy@wesasships.com</span> .</p>
+                </div>
+                <hr>
+                <div class="text-left">
+                    <h5>Communication policy:</h5>
+                    <p>
+                        <strong>For opt-in</strong><br><br>
+                        For a user to receive our weekly newsletter, student/employer digests and/or any other marketing communication from us over email; Wesasships follows a double opt-in policy where after submitting your email address you need to verify it by clicking on a verification link that we would send to you over given email address. Until the email is verified, you would not receive the newsletter or any marketing communication from us.
+                    </p>
+                    <p>
+                        <strong>For opt-out</strong><br><br>
+                        <strong>Marketing/ Digests/ Newsletter:<br></strong> Every newsletter and promotional communication from Wesasships contains an 'Unsubscribe' link that you can click on to stop receiving any future newsletters and promotional content from us on your email. It may take upto 7 days for your unsubscription request to be processed.
+                       <br><br><strong> Transactional:<br> </strong>We require to send users transactional communication as this is required for proper functioning of our service. If you wish to discontinue receiving any transactional communication from Wesasships, write to us at <span class="text-info">privacy@wesasships.com</span>
+                    </p>
+                </div>
+                <hr>
+                <div class="text-left">
+                    <h5>Cookies and pixel tags:</h5>
+                    <p>
+                            We and third parties with whom we partner, may use cookies, web beacons, pixel tags etc. to collect information regarding your use of Wesasships and third party websites. A cookie is a small text file that is stored on your computer that enables us to remember you (for example, as a registered user) and your actions when you visit our website. This helps us remember your preferences and searches, improve your experience (for example, by keeping you logged in), customize content according to your preferences and perform analytics, and assist with security and administrative functions. Cookies may be persistent or stored only during an individual session ,as necessary. A pixel tag is a tiny graphic with a unique identifier embedded invisibly in an email and may be used to track whether the email has been opened and for other analytics.
+                    </p>
+                    <p>
+                            Most modern browsers will allow you to disable some/all cookies for any website. However, this is not recommended and doing so may interfere with normal functioning of Wesasships. If you do not turn cookies off, please make sure you logout when you finish using a shared computer.
+                    </p>
+                </div>
+                <hr>
+                <div class="text-left">
+                    <h5>Children:</h5>
+                    <p>
+                            Wesasships is not intended for children under 13 years of age. If you are less than 13 years old at the time of your first visit to Wesasships, you are prohibited from using the website further entirely on your own. You may do so under parental guidance. However, please note that we have no way of determining your age when you visit our website or whether you have parental supervision available or not. We do not intend to and do not knowingly collect personal information from children under 13. However, since we do not collect information on a user's birth date and proof of same, there is no foolproof way for us to ensure the same.
+                    </p>
+                </div>
+                <hr>
+                <div class="text-left">
+                    <h5>Security of information:</h5>
+                    <p>
+                            We have implemented generally accepted industry standards in terms of security measures to protect your information on Wesasships. The third party payment service providers (payment gateways) are all validated as compliant with the payment card industry standard (generally referred to as PCI compliant service providers).
+                    </p>
+                    <p>
+                            While we try our best to safeguard information, there may be factors beyond our control that may result in unwanted disclosure of information. We assume no liability or responsibility for disclosure of your information due to causes beyond our control.
+                    </p>
+                    <p>
+                            In order to keep personal information secure, you must not share your password or other security information (for example, unique keys) of your Wesasships account with anyone. If you are using a shared computer, please make sure you logout after every use. If we receive instructions using your email and password, we will consider that the instructions have been authorized by you.
+                    </p>
+                </div>
+                <hr>
+                <div class="text-left">
+                    <h5>GDPR entitlement:</h5>
+                    <p>
+                            EU General Data Protection Regulation (GDPR) has provided the below rights to the EU residents:
+                            <ul>
+                                <li>Right to information - the purposes for processing Personal Information and the rights of the individual.</li>
+                                <li>Right to access the Personal Information that are processed.</li>
+                                <li>Right to erasure (”Right to be forgotten”).</li>
+                                <li>Right to rectification.</li>
+                                <li>Right to restriction of processing.</li>
+                                <li>Right to object (opt-out) to processing.</li>
+                            </ul>
+                            EU residents can exercise these rights by raising a request directly at <span class="text-info">privacy@wesasships.com.</span>
+                    </p>
+                </div>
+                <hr>
+                <div class="text-left">
+                    <h5>No Guarantees:</h5>
+                    <p>
+                            While this Privacy Policy states our standards for maintenance of data and we will make efforts to meet them, we are not in a position to guarantee these standards. There may be factors beyond our control that may result in disclosure of data. As a consequence, we disclaim any warranties or representations relating to maintenance or nondisclosure of data.
+                    </p>
+                </div>
+                <hr>
+                <div class="text-left">
+                    <h5>Changes to this Privacy Policy:</h5>
+                    <p>
+                            We may make changes to this Policy from time to time. We may notify you of substantial changes to this Policy either by posting a prominent announcement on our Services and/or by sending a message to the e-mail address you have provided to us. You are advised to refer to this page to know about our latest Privacy Policy.
+                    </p>
+                </div>
+                <% } %>
+            </div>
+        </div>
+
+        <!--BOTTOM SECTION OF THE PAGE-->
+        <% include partials/footer.ejs %>     
+</body>
+</html>
