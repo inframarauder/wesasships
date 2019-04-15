@@ -5,7 +5,7 @@ const payumoney = require('payumoney-node');
 
 //configure payumoney:
 payumoney.setKeys('122vRI7i','ew6lARLvIw','QtlDdYR5Zy1r0vD5leimBZ5UHxbL0HC1aT7pnqmUfVY=');
-payumoney.isProdMode(false);
+payumoney.isProdMode(true);
 var txnid = new Date().getTime();
 
 function isLoggedIn(req,res,next){
@@ -31,8 +31,8 @@ router.post('/premium_profile',isLoggedIn,(req,res)=>{
         lastname: req.body.lastName,
         firstname: req.body.firstName,
         surl: "http://www.wesasships.com/students/dashboard", 
-        furl: "http://www.wesasships.com/premium_profile"/*,
-       /enforce_paymethod:['CC','DC','UPI','CASHCARD']*/
+        furl: "http://www.wesasships.com/premium_profile",
+        enforce_paymethod:['CC','DC','UPI','CASHCARD']
     };
     //console.log(paymentData);
     payumoney.makePayment(paymentData, function(error, response) {
