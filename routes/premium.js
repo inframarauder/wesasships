@@ -4,7 +4,7 @@ const payumoney = require('payumoney-node');
 
 
 //configure payumoney:
-payumoney.setKeys('7KRHeKMd','bOK8UgvB7q','OKsLH3TIBVgV2focCUXAJsBXMuJpv724i6NFzThDBUo=');
+payumoney.setKeys('122vRI7i','ew6lARLvIw','QtlDdYR5Zy1r0vD5leimBZ5UHxbL0HC1aT7pnqmUfVY=');
 payumoney.isProdMode(false);
 var txnid = new Date().getTime();
 

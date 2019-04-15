@@ -7,7 +7,7 @@ module.exports={
     google:{
         clientID:'846811226792-bb0heuesfam3hofkt69k0u0c9ktkdpbd.apps.googleusercontent.com',
         clientSecret:'PIc3ddoQ3xaI0JxL9yxWTrTw',
-        callbackURL:'http://wesasships.com/students/google/redirect'
+        callbackURL:'http://www.wesasships.com/students/google/redirect'
     },
     email:{
         emailID:'wesasships@gmail.com',
