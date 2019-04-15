@@ -65,17 +65,17 @@
         <p>Enter your details here to access the payment gateway:</p>
           <form method="POST" action="/premium_profile"  id="paymentform">
             <label>Email :</label>
-            <input class="form-control" type="email" name="email" value="<%= student.username %>">
+            <input class="form-control" type="email" name="email" value="<%= student.username %>" required>
             <label>Phone:</label>
-            <input class="form-control" type="tel" name="phone" value="<%= student.phoneNumber %>">
+            <input class="form-control" type="tel" name="phone" value="<%= student.phoneNumber %>"required>
             <div class="form-group row">
               <div class="col">
                 <label>First Name:</label>
-                <input class="form-control" type="text" name="firstName" value="<%= student.firstName %>">
+                <input class="form-control" type="text" name="firstName" value="<%= student.firstName %>" required>
               </div>
               <div class="col">
                 <label>Last Name:</label>
-                <input class="form-control" type="text" name="lastName" value="<%= student.lastName %>">
+                <input class="form-control" type="text" name="lastName" value="<%= student.lastName %>" required>
               </div>
             </div>
             <input type="submit" class="btn btn-primary btn-block" value=" Proceed to Pay Rs.499">
