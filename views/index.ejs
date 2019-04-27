@@ -17,327 +17,327 @@
   </head>
   <body>
       <!--ERRORS GO HERE-->
-      <% if(error) {%>
-         <div class="error">
-             <p style="margin-top:5px; padding: 5px 5px 5px 5px;"><%= error.msg %><br>Please try logging in again.</p>
-         </div> 
-     <% }%>
-      <!--top section of the page-->
-    <nav class="navbar navbar-expand-sm navbar-light ">
-        <% include partials/title-logo.ejs %>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-        <div class="collapse navbar-collapse " id="navbarContent">
-            <ul class="navbar-nav ml-auto">
-               <% include partials/internshipList.ejs %>
-                <li class="nav-item mr-4">
-                    <a class="btn btn-primary" data-toggle="modal" data-target="#login-modal" href="/">
-                         Login/Register
-                    </a>
-                </li>       
-            </ul>
-        </div>     
-    </nav>
-    <!-- Modal -->
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-              </button>
-            </div>
-           <div class="display-flex" id="google-sign-in">
-                <a type="button" class="btn btn-block" id="googlebtn" href="/students/signup/google">
-                        <img class="google-icon" src="../assets/images/icons/google.png">
-                      Sign in with Google
-                </a> 
-              </div>
-              <div class='display-block' id='divider'>
-                  <hr>
-                  <p class='text-center'>OR</p>
-              </div>
-            <div class="modal-body">
-              <div id="user-menu-container">
-                  <div id="user-menu">
-                      <div class="col-xs-6 user-menu-item login-student  active" id="modal-student"> 
-                            STUDENT
-                        </div>
-                     <div class="col-xs-6 user-menu-item login-employer" id="modal-employer"> 
-                          EMPLOYER
-                      </div>
-                  </div>
-              </div>
-            <!-- <div class="text-center text-info display-none" id="launchInfo">
-                  <p class="display-4">Student portal launches on April 15,2019.</p>
-              </div>-->
-              <form method="POST" action="/students/login" id='loginForm'>
-                    <div class="form-group">
-                      <label for="EmailInput">Email</label>
-                      <input type="text" class="form-control" id="EmailInput" name="username" placeholder="Registered email id">
-                    </div>
-                    <div class="form-group">
-                      <label for="PassInput">Password</label>
-                      <input type="password" class="form-control" id="PassInput" name="password" placeholder="Minimum 6 characters">
-                      <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="ShowPassChkbx">
-                            <label class="form-check-label" for="ShowPassChkbx">
-                              Show Password
-                            </label>
-                        </div>
-                    </div>
-                    <div class='forgot-msg text-center'>
-                            <a id="forgotLink" href="/students/forgot">Forgot Password?</a>
-                    </div>
-                    <button class="btn btn-primary  btn-block" type="submit">Log in </button>
-                    <div class="signup-section text-center">
-                        <p >
-                            Dont have an account? <br>Sign up!(
-                          <a href="/students/signup">Student</a>
-                            /
-                            <a href="/employers/signup">Employer</a>)
-                        </p>
-                    </div>
-                </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--JavaScript for Modal Operations/Functions-->
-    <script>
-        $('#modal-employer').click(()=>{
-            $('#modal-employer').addClass('active');
-            $('#modal-student').removeClass('active');
-            $('#google-sign-in').removeClass('display-flex');
-            $('#google-sign-in').addClass('display-none');
-            $('#divider').removeClass('display-block');
-            $('#divider').addClass('display-none');
-            $('form').attr('action','/employers/login');
-            $('#forgotLink').attr('href','/employers/forgot');
-        });
-        $('#modal-student').click(()=>{
-            $('#modal-student').addClass('active');
-            $('#modal-employer').removeClass('active');
-            $('#google-sign-in').removeClass('display-none');
-            $('#google-sign-in').addClass('display-flex');
-            $('#divider').removeClass('display-none');
-            $('#divider').addClass('display-block');
-            $('form').attr('action','/students/login');
-            $('#forgotLink').attr('href','/students/forgot');
-        });
-        /*
-        $('#modal-employer').click(()=>{
-            $('#modal-employer').addClass('active');
-            $('#modal-student').removeClass('active');
-            $('#loginForm').removeClass('display-none');
-            $('#launchInfo').addClass('display-none');
-        });
-        $('#modal-student').click(()=>{
-            $('#modal-student').addClass('active');
-            $('#modal-employer').removeClass('active');
-            $('#loginForm').addClass('display-none');
-            $('#launchInfo').removeClass('display-none');
-        });
-        */
-        $('#ShowPassChkbx').click(()=>{
-          var type =  $('#PassInput').attr('type');
-          if(type === 'text');
-            $('#PassInput').attr('type','password');
-          if(type === 'password')
-            $('#PassInput').attr('type','text');
-        });
-    </script>
-
-    <!--Slider-->
-
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img class="d-block w-100" src="../assets/images/sliders/slider 1.jpeg" alt="First slide" style="max-height: 400px;">
-              </div>
-              <div class="carousel-item">
-                <img class="d-block w-100" src="../assets/images/sliders/slider 2.jpeg" alt="Second slide" style="max-height: 350px;">
-              </div>
-              <div class="carousel-item">
-                <img class="d-block w-100" src="../assets/images/sliders/slider 3.jpeg" alt="Third slide"style="max-height: 350px;" >
-              </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-          
-          <!--cards-->
-          <div class="container">
-                <div class="popular-message">Internships in Popular Cities : </div>
-                <div class="row" >
-                    <div class="col">
-                        <a href="/internships/work-from-home">
-                            <div class="card" style="width: 7rem; height:7rem;">
-                                <div class="card-body" id="work-from-home">
-                                    <span class="card-caption">Work From Home</span>
-                                </div>     
-                            </div>  
-                        </a>
-                    </div>
-                    <div class="col">
-                            <a href="/internships/Delhi">
-                                <div class="card" style="width: 7rem; height:7rem;">
-                                    <div class="card-body" id="Delhi">
-                                        <span class="card-caption">Delhi NCR</span>
-                                    </div>     
-                                </div>  
-                            </a>
-                    </div>
-                    <div class="col">
-                            <a href="/internships/Hyderabad">
-                                <div class="card" style="width: 7rem; height:7rem;">
-                                    <div class="card-body" id="Hyderabad">
-                                        <span class="card-caption">Hyderabad</span>
-                                    </div>     
-                                </div>  
-                            </a>
-                    </div>
-                    <div class="col">
-                            <a href="/internships/Chennai">
-                                <div class="card" style="width: 7rem; height:7rem;">
-                                    <div class="card-body" id="Chennai">
-                                        <span class="card-caption">Chennai</span>
-                                    </div>     
-                                </div>  
-                            </a>
-                    </div>
-                    <div class="col">
-                            <a href="/internships/Bangalore">
-                                <div class="card" style="width: 7rem; height:7rem;">
-                                    <div class="card-body" id="Bangalore">
-                                        <span class="card-caption">Bangalore</span>
-                                    </div>     
-                                </div>  
-                            </a>
-                    </div>
-                    <div class="col">
-                            <a href="/internships/Mumbai">
-                                <div class="card" style="width: 7rem; height:7rem;">
-                                    <div class="card-body" id="Mumbai">
-                                        <span class="card-caption">Mumbai</span>
-                                    </div>     
-                                </div>  
-                            </a>
-                    </div>
-                    <div class="col">
-                            <a href="/internships/Kolkata">
-                                <div class="card" style="width: 7rem; height:7rem;">
-                                    <div class="card-body" id="Kolkata">
-                                        <span class="card-caption">Kolkata</span>
-                                    </div>     
-                                </div>  
-                            </a>
-                    </div>
-                    <div class="col">
-                            <a href="/internships/International">
-                                <div class="card" style="width: 7rem; height:7rem;">
-                                    <div class="card-body" id="International">
-                                        <span class="card-caption" style="font-size:8px;">International</span>
-                                    </div>     
-                                </div>  
-                            </a>
-                    </div>
-                </div>
-            <div class="popular-message">Internships in Popular Categories :</div>
-            <div class="row" >
-                    <div class="col">
-                        <a href="/internships/Part-Time">
-                            <div class="card" style="width: 7rem; height:7rem;">
-                                <div class="card-body" id="Part-Time">
-                                    <span class="card-caption">Part Time</span>
-                                </div>     
-                            </div>  
-                        </a>
-                    </div>
-                    <div class="col">
-                            <a href="/internships/Engineering">
-                                <div class="card" style="width: 7rem; height:7rem;">
-                                    <div class="card-body" id="Engineering">
-                                        <span class="card-caption">Engineering</span>
-                                    </div>     
-                                </div>  
-                            </a>
-                    </div>
-                    <div class="col">
-                            <a href="/internships/Law">
-                                <div class="card" style="width: 7rem; height:7rem;">
-                                    <div class="card-body" id="Ngo">
-                                        <span class="card-caption">Law</span>
-                                    </div>     
-                                </div>  
-                            </a>
-                    </div>
-                    <div class="col">
-                            <a href="/internships/MBA">
-                                <div class="card" style="width: 7rem; height:7rem;">
-                                    <div class="card-body" id="Mba">
-                                        <span class="card-caption">MBA</span>
-                                    </div>     
-                                </div>  
-                            </a>
-                    </div>
-                    <div class="col">
-                            <a href="/internships/Sports">
-                                <div class="card" style="width: 7rem; height:7rem;">
-                                    <div class="card-body" id="Sports">
-                                        <span class="card-caption">Sports</span>
-                                    </div>     
-                                </div>  
-                            </a>
-                    </div>
-                    <div class="col">
-                            <a href="/internships/Science">
-                                <div class="card" style="width: 7rem; height:7rem;">
-                                    <div class="card-body" id="Science">
-                                        <span class="card-caption">Science</span>
-                                    </div>     
-                                </div>  
-                            </a>
-                    </div>
-                    <div class="col">
-                            <a href="/internships/VideoEditing">
-                                <div class="card" style="width: 7rem; height:7rem;">
-                                    <div class="card-body" id="Media">
-                                        <span class="card-caption">Media</span>
-                                    </div>     
-                                </div>  
-                            </a>
-                    </div>
-                    <div class="col">
-                            <a href="/internships/Humanities">
-                                <div class="card" style="width: 7rem; height:7rem;">
-                                    <div class="card-body" id="Humanities">
-                                        <span class="card-caption">Humanities</span>
-                                    </div>     
-                                </div>  
-                            </a>
-                    </div>
-                </div>
-          </div><br>
-    <!--last link-->
-    <div class="container text-center">
-        or,
-            <a href="/internships/all_internships">view all internships</a>
-    </div>
-
-        <% include partials/footer.ejs %>
+        <% if(error) {%>
+            <div class="error">
+                <p style="margin-top:5px; padding: 5px 5px 5px 5px;"><%= error.msg %><br>Please try logging in again.</p>
+            </div> 
+        <% }%>
+         <!--top section of the page-->
+       <nav class="navbar navbar-expand-sm navbar-light ">
+           <% include partials/title-logo.ejs %>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                   <span class="navbar-toggler-icon"></span>
+                 </button>
+           <div class="collapse navbar-collapse " id="navbarContent">
+               <ul class="navbar-nav ml-auto">
+                  <% include partials/internshipList.ejs %>
+                   <li class="nav-item mr-4">
+                       <a class="btn btn-primary" data-toggle="modal" data-target="#login-modal" href="/">
+                            Login/Register
+                       </a>
+                   </li>       
+               </ul>
+           </div>     
+       </nav>
+       <!-- Modal -->
+   <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+           <div class="modal-dialog" role="document">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">×</span>
+                 </button>
+               </div>
+              <div class="display-flex" id="google-sign-in">
+                   <a type="button" class="btn btn-block" id="googlebtn" href="/students/signup/google">
+                           <img class="google-icon" src="../assets/images/icons/google.png">
+                         Sign in with Google
+                   </a> 
+                 </div>
+                 <div class='display-block' id='divider'>
+                     <hr>
+                     <p class='text-center'>OR</p>
+                 </div>
+               <div class="modal-body">
+                 <div id="user-menu-container">
+                     <div id="user-menu">
+                         <div class="col-xs-6 user-menu-item login-student  active" id="modal-student"> 
+                               STUDENT
+                           </div>
+                        <div class="col-xs-6 user-menu-item login-employer" id="modal-employer"> 
+                             EMPLOYER
+                         </div>
+                     </div>
+                 </div>
+               <!-- <div class="text-center text-info display-none" id="launchInfo">
+                     <p class="display-4">Student portal launches on April 15,2019.</p>
+                 </div>-->
+                 <form method="POST" action="/students/login" id='loginForm'>
+                       <div class="form-group">
+                         <label for="EmailInput">Email</label>
+                         <input type="text" class="form-control" id="EmailInput" name="username" placeholder="Registered email id">
+                       </div>
+                       <div class="form-group">
+                         <label for="PassInput">Password</label>
+                         <input type="password" class="form-control" id="PassInput" name="password" placeholder="Minimum 6 characters">
+                         <div class="form-check">
+                               <input class="form-check-input" type="checkbox" value="" id="ShowPassChkbx">
+                               <label class="form-check-label" for="ShowPassChkbx">
+                                 Show Password
+                               </label>
+                           </div>
+                       </div>
+                       <div class='forgot-msg text-center'>
+                               <a id="forgotLink" href="/students/forgot">Forgot Password?</a>
+                       </div>
+                       <button class="btn btn-primary  btn-block" type="submit">Log in </button>
+                       <div class="signup-section text-center">
+                           <p >
+                               Dont have an account? <br>Sign up!(
+                             <a href="/students/signup">Student</a>
+                               /
+                               <a href="/employers/signup">Employer</a>)
+                           </p>
+                       </div>
+                   </form>
+               </div>
+             </div>
+           </div>
+         </div>
+         <!--JavaScript for Modal Operations/Functions-->
+       <script>
+           $('#modal-employer').click(()=>{
+               $('#modal-employer').addClass('active');
+               $('#modal-student').removeClass('active');
+               $('#google-sign-in').removeClass('display-flex');
+               $('#google-sign-in').addClass('display-none');
+               $('#divider').removeClass('display-block');
+               $('#divider').addClass('display-none');
+               $('form').attr('action','/employers/login');
+               $('#forgotLink').attr('href','/employers/forgot');
+           });
+           $('#modal-student').click(()=>{
+               $('#modal-student').addClass('active');
+               $('#modal-employer').removeClass('active');
+               $('#google-sign-in').removeClass('display-none');
+               $('#google-sign-in').addClass('display-flex');
+               $('#divider').removeClass('display-none');
+               $('#divider').addClass('display-block');
+               $('form').attr('action','/students/login');
+               $('#forgotLink').attr('href','/students/forgot');
+           });
+           /*
+           $('#modal-employer').click(()=>{
+               $('#modal-employer').addClass('active');
+               $('#modal-student').removeClass('active');
+               $('#loginForm').removeClass('display-none');
+               $('#launchInfo').addClass('display-none');
+           });
+           $('#modal-student').click(()=>{
+               $('#modal-student').addClass('active');
+               $('#modal-employer').removeClass('active');
+               $('#loginForm').addClass('display-none');
+               $('#launchInfo').removeClass('display-none');
+           });
+           */
+           $('#ShowPassChkbx').click(()=>{
+             var type =  $('#PassInput').attr('type');
+             if(type === 'text');
+               $('#PassInput').attr('type','password');
+             if(type === 'password')
+               $('#PassInput').attr('type','text');
+           });
+       </script>
+   
+       <!--Slider-->
+   
+       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+               <ol class="carousel-indicators">
+                   <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                   <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                   <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+               </ol>
+               <div class="carousel-inner">
+                 <div class="carousel-item active">
+                   <img class="d-block w-100" src="../assets/images/sliders/slider 1.jpeg" alt="First slide" style="max-height: 400px;">
+                 </div>
+                 <div class="carousel-item">
+                   <img class="d-block w-100" src="../assets/images/sliders/slider 2.jpeg" alt="Second slide" style="max-height: 350px;">
+                 </div>
+                 <div class="carousel-item">
+                   <img class="d-block w-100" src="../assets/images/sliders/slider 3.jpeg" alt="Third slide"style="max-height: 350px;" >
+                 </div>
+               </div>
+               <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                 <span class="sr-only">Previous</span>
+               </a>
+               <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                 <span class="sr-only">Next</span>
+               </a>
+             </div>
+             
+             <!--cards-->
+             <div class="container">
+                   <div class="popular-message">Internships in Popular Cities : </div>
+                   <div class="row" >
+                       <div class="col">
+                           <a href="/internships/work-from-home">
+                               <div class="card" style="width: 7rem; height:7rem;">
+                                   <div class="card-body" id="work-from-home">
+                                       <span class="card-caption">Work From Home</span>
+                                   </div>     
+                               </div>  
+                           </a>
+                       </div>
+                       <div class="col">
+                               <a href="/internships/Delhi">
+                                   <div class="card" style="width: 7rem; height:7rem;">
+                                       <div class="card-body" id="Delhi">
+                                           <span class="card-caption">Delhi NCR</span>
+                                       </div>     
+                                   </div>  
+                               </a>
+                       </div>
+                       <div class="col">
+                               <a href="/internships/Hyderabad">
+                                   <div class="card" style="width: 7rem; height:7rem;">
+                                       <div class="card-body" id="Hyderabad">
+                                           <span class="card-caption">Hyderabad</span>
+                                       </div>     
+                                   </div>  
+                               </a>
+                       </div>
+                       <div class="col">
+                               <a href="/internships/Chennai">
+                                   <div class="card" style="width: 7rem; height:7rem;">
+                                       <div class="card-body" id="Chennai">
+                                           <span class="card-caption">Chennai</span>
+                                       </div>     
+                                   </div>  
+                               </a>
+                       </div>
+                       <div class="col">
+                               <a href="/internships/Bangalore">
+                                   <div class="card" style="width: 7rem; height:7rem;">
+                                       <div class="card-body" id="Bangalore">
+                                           <span class="card-caption">Bangalore</span>
+                                       </div>     
+                                   </div>  
+                               </a>
+                       </div>
+                       <div class="col">
+                               <a href="/internships/Mumbai">
+                                   <div class="card" style="width: 7rem; height:7rem;">
+                                       <div class="card-body" id="Mumbai">
+                                           <span class="card-caption">Mumbai</span>
+                                       </div>     
+                                   </div>  
+                               </a>
+                       </div>
+                       <div class="col">
+                               <a href="/internships/Kolkata">
+                                   <div class="card" style="width: 7rem; height:7rem;">
+                                       <div class="card-body" id="Kolkata">
+                                           <span class="card-caption">Kolkata</span>
+                                       </div>     
+                                   </div>  
+                               </a>
+                       </div>
+                       <div class="col">
+                               <a href="/internships/International">
+                                   <div class="card" style="width: 7rem; height:7rem;">
+                                       <div class="card-body" id="International">
+                                           <span class="card-caption" style="font-size:8px;">International</span>
+                                       </div>     
+                                   </div>  
+                               </a>
+                       </div>
+                   </div>
+               <div class="popular-message">Internships in Popular Categories :</div>
+               <div class="row" >
+                       <div class="col">
+                           <a href="/internships/Part-Time">
+                               <div class="card" style="width: 7rem; height:7rem;">
+                                   <div class="card-body" id="Part-Time">
+                                       <span class="card-caption">Part Time</span>
+                                   </div>     
+                               </div>  
+                           </a>
+                       </div>
+                       <div class="col">
+                               <a href="/internships/Engineering">
+                                   <div class="card" style="width: 7rem; height:7rem;">
+                                       <div class="card-body" id="Engineering">
+                                           <span class="card-caption">Engineering</span>
+                                       </div>     
+                                   </div>  
+                               </a>
+                       </div>
+                       <div class="col">
+                               <a href="/internships/Law">
+                                   <div class="card" style="width: 7rem; height:7rem;">
+                                       <div class="card-body" id="Ngo">
+                                           <span class="card-caption">Law</span>
+                                       </div>     
+                                   </div>  
+                               </a>
+                       </div>
+                       <div class="col">
+                               <a href="/internships/MBA">
+                                   <div class="card" style="width: 7rem; height:7rem;">
+                                       <div class="card-body" id="Mba">
+                                           <span class="card-caption">MBA</span>
+                                       </div>     
+                                   </div>  
+                               </a>
+                       </div>
+                       <div class="col">
+                               <a href="/internships/Sports">
+                                   <div class="card" style="width: 7rem; height:7rem;">
+                                       <div class="card-body" id="Sports">
+                                           <span class="card-caption">Sports</span>
+                                       </div>     
+                                   </div>  
+                               </a>
+                       </div>
+                       <div class="col">
+                               <a href="/internships/Science">
+                                   <div class="card" style="width: 7rem; height:7rem;">
+                                       <div class="card-body" id="Science">
+                                           <span class="card-caption">Science</span>
+                                       </div>     
+                                   </div>  
+                               </a>
+                       </div>
+                       <div class="col">
+                               <a href="/internships/VideoEditing">
+                                   <div class="card" style="width: 7rem; height:7rem;">
+                                       <div class="card-body" id="Media">
+                                           <span class="card-caption">Media</span>
+                                       </div>     
+                                   </div>  
+                               </a>
+                       </div>
+                       <div class="col">
+                               <a href="/internships/Humanities">
+                                   <div class="card" style="width: 7rem; height:7rem;">
+                                       <div class="card-body" id="Humanities">
+                                           <span class="card-caption">Humanities</span>
+                                       </div>     
+                                   </div>  
+                               </a>
+                       </div>
+                   </div>
+             </div><br>
+       <!--last link-->
+       <div class="container text-center">
+           or,
+               <a href="/internships/all_internships">view all internships</a>
+       </div>
+   
+           <% include partials/footer.ejs %>
 
     </body>
     </html>
