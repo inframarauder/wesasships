@@ -120,12 +120,12 @@
                    }
                 });
             </script>
-            <div class="col-sm-9">
+            <div class="col-sm-9" style="overflow:auto;">
                 <div>
                         <% if (internships) { %>
                             <p class="text-center text-info"><%= internships.length %> internship(s) found...</p>
                             <% for(var i=0;i<internships.length;i++){ %>
-                                <% if(!internships[i].closeApplication){ %>
+                               
                                     <div class="internships-area">
                                             <% if(internships[i].company_details.logo){ %>
                                                 <div class="company-logo"><img src="../uploads/<%= internships[i].company_details.logo %>"></div>
@@ -157,6 +157,7 @@
                                                     </div>
                                                 </div>
                                                <br>
+                                    <% if(!internships[i].closeApplication){ %>
                                                 <p class="text-info">
                                                     <%= internships[i].type %>
                                                     <a href="/internships/details/?id=<%= internships[i].id %>" style="float:right">View Details/Apply</a>
@@ -164,9 +165,13 @@
                                                 <% if(internships[i].jobOffer){ %>
                                                     <h5 class="text-info">This internship comes with a job offer!</h5>
                                               <%  } %>
-                                        </div><br>
-                              <%  } %>
-                                    
+                                        
+                              <%  }else{ %>
+                                <p class="text-danger">
+                                    <span style="float:right">Applications have closed!</span>
+                                </p> 
+                            <%  } %>
+                        </div><br>
                            <% } %>
                          <% } %>
                 </div>
